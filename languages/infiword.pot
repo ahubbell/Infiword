@@ -1,0 +1,182 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Infismash\n"
+"POT-Creation-Date: 2014-04-28 07:37+0530\n"
+"PO-Revision-Date: 2014-04-28 07:39+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:4
+msgid "Not Found"
+msgstr ""
+
+#: ../404.php:8
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+
+#: ../archive.php:6
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: ../archive.php:9
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: ../archive.php:12
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: ../archive.php:15
+msgid "Archives"
+msgstr ""
+
+#: ../archive.php:38 ../author.php:21 ../category.php:21 ../front-page.php:23
+#: ../front-page.php:43 ../home.php:23 ../home.php:45 ../index.php:51
+#: ../index.php:69 ../page.php:30 ../search.php:23 ../single.php:51
+#: ../single.php:69 ../tag.php:23
+msgid "Sorry, this page does not exist."
+msgstr ""
+
+#: ../comments.php:21 ../comments.php:39
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:22 ../comments.php:40
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:23 ../comments.php:41
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:46
+msgid "Comments are closed."
+msgstr ""
+
+#: ../functions.php:190
+msgid "Primary Menu"
+msgstr ""
+
+#: ../functions.php:191
+msgid "Secondary Menu"
+msgstr ""
+
+#: ../functions.php:211
+msgid "year"
+msgstr ""
+
+#: ../functions.php:211
+msgid "years"
+msgstr ""
+
+#: ../functions.php:212
+msgid "month"
+msgstr ""
+
+#: ../functions.php:212
+msgid "months"
+msgstr ""
+
+#: ../functions.php:213
+msgid "week"
+msgstr ""
+
+#: ../functions.php:213
+msgid "weeks"
+msgstr ""
+
+#: ../functions.php:214
+msgid "day"
+msgstr ""
+
+#: ../functions.php:214
+msgid "days"
+msgstr ""
+
+#: ../functions.php:215
+msgid "hour"
+msgstr ""
+
+#: ../functions.php:215
+msgid "hours"
+msgstr ""
+
+#: ../functions.php:216
+msgid "minute"
+msgstr ""
+
+#: ../functions.php:216
+msgid "minutes"
+msgstr ""
+
+#: ../functions.php:217
+msgid "second"
+msgstr ""
+
+#: ../functions.php:217 ../functions.php:257
+msgid "seconds"
+msgstr ""
+
+#: ../functions.php:234
+msgid "sometime"
+msgstr ""
+
+#: ../functions.php:260
+msgid " ago"
+msgstr ""
+
+#: ../functions.php:272
+msgid "Comments"
+msgstr ""
+
+#: ../functions.php:274
+msgid "Hide Comments"
+msgstr ""
+
+#: ../functions.php:370 ../functions.php:376
+msgid "Logo"
+msgstr ""
+
+#: ../functions.php:387 ../functions.php:393
+msgid "Favicon"
+msgstr ""
+
+#: ../inc/slider/slider_post_type.php:9 ../inc/slider/slider_post_type.php:10
+msgid "Add New Slide"
+msgstr ""
+
+#: ../inc/slider/slider_post_type.php:11
+msgid "Edit Slide"
+msgstr ""
+
+#: ../inc/slider/slider_post_type.php:12
+msgid "New Slide"
+msgstr ""
+
+#: ../inc/slider/slider_post_type.php:13
+msgid "View Slide"
+msgstr ""
+
+#: ../inc/slider/slider_post_type.php:14
+msgid "Search Slides"
+msgstr ""
+
+#: ../inc/slider/slider_post_type.php:15 ../inc/slider/slider_post_type.php:16
+#: ../inc/slider/slider_post_type.php:17 ../inc/slider/slider_post_type.php:27
+msgid "Slide"
+msgstr ""
+
+#: ../inc/slider/slider_post_type.php:18
+msgid "Slides"
+msgstr ""
