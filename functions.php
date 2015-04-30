@@ -1,427 +1,602 @@
-<?php 
+<?php
 
-add_action('after_setup_theme', 'infi_setup');
-function infi_setup(){
-    load_theme_textdomain('infiword', get_template_directory() . '/languages');
-}
-
-//registering jqueryminjs
-function infi_scripts_jqueryminjs()
-{
-    wp_register_script( 'jqueryminjs', get_template_directory_uri() . '/bootstrap/js/jquery.min.js', array( 'jquery' ) );
-	wp_enqueue_script( 'jqueryminjs' );
-}
-add_action( 'wp_enqueue_scripts', 'infi_scripts_jqueryminjs' );
-
-//registering jqueryminjs
-function infi_scripts_masonryjs()
-{
-    wp_register_script( 'masonryjs', get_template_directory_uri() . '/bootstrap/js/masonry.pkgd.min.js', array( 'jquery' ) );
-	wp_enqueue_script( 'masonryjs' );
-}
-add_action( 'wp_enqueue_scripts', 'infi_scripts_masonryjs' );
-
-//registering bootstrap scripts
-function infi_scripts_bootstrapjs()
-{
-    //Bootstrap Js//
-	wp_register_script( 'bootstrapjs', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ) );
-	wp_enqueue_script( 'bootstrapjs' );
-}
-add_action( 'wp_enqueue_scripts', 'infi_scripts_bootstrapjs' );
-
-//registering custom scripts
-function infi_scripts_customjs()
-{
-    //custom script//
-    wp_register_script( 'customjs', get_template_directory_uri() . '/bootstrap/js/custom.js', array( 'jquery' ) );
-	wp_enqueue_script( 'customjs' );
-}
-add_action( 'wp_enqueue_scripts', 'infi_scripts_customjs' );
-
-//registering bootstrap css
-function wp_register_css() {
-    wp_register_style(
-        'bootstrap.min', 
-        get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css'
-    );
-    wp_enqueue_style( 'bootstrap.min' );
-}
-add_action( 'wp_enqueue_scripts', 'wp_register_css' );
-
-//registering fontawesome css
-function wp_register_fa_css() {
-    wp_register_style(
-        'font-awesome.min', 
-        get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css'
-    );
-    wp_enqueue_style( 'font-awesome.min' );
-}
-add_action( 'wp_enqueue_scripts', 'wp_register_fa_css' );
-
-//registering sidebar
-if ( function_exists('register_sidebar') )
-	register_sidebar(array(
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '<h3>',
-		'after_title' => '</h3>',
-	));
-
-//enable featured posts thumbnails//
-add_theme_support( 'post-thumbnails' );
-
-/**
- * Extended Walker class for use with the
- * Twitter Bootstrap toolkit Dropdown menus in Wordpress.
- * Edited to support n-levels submenu.
- * @author johnmegahan https://gist.github.com/1597994, Emanuele 'Tex' Tessore https://gist.github.com/3765640
- * @license CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
- */
-class BootstrapNavMenuWalker extends Walker_Nav_Menu {
- 
- 
-	function start_lvl( &$output, $depth ) {
- 
-		$indent = str_repeat( "\t", $depth );
-		$submenu = ($depth > 0) ? ' sub-menu' : '';
-		$output	   .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
- 
-	}
- 
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
- 
- 
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
- 
-		$li_attributes = '';
-		$class_names = $value = '';
- 
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-		
-		// managing divider: add divider class to an element to get a divider before it.
-		$divider_class_position = array_search('divider', $classes);
-		if($divider_class_position !== false){
-			$output .= "<li class=\"divider\"></li>\n";
-			unset($classes[$divider_class_position]);
-		}
-		
-		$classes[] = ($args->has_children) ? 'dropdown' : '';
-		$classes[] = ($item->current || $item->current_item_ancestor) ? 'active' : '';
-		$classes[] = 'menu-item-' . $item->ID;
-		if($depth && $args->has_children){
-			$classes[] = 'dropdown-submenu';
-		}
- 
- 
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-		$class_names = ' class="' . esc_attr( $class_names ) . '"';
- 
-		$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-		$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
- 
-		$output .= $indent . '<li' . $id . $value . $class_names . $li_attributes . '>';
- 
-		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-		$attributes .= ($args->has_children) 	    ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
- 
-		$item_output = $args->before;
-		$item_output .= '<a'. $attributes .'>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= ($depth == 0 && $args->has_children) ? ' <b class="caret"></b></a>' : '</a>';
-		$item_output .= $args->after;
- 
- 
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
-	
- 
-	function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
-		//v($element);
-		if ( !$element )
-			return;
- 
-		$id_field = $this->db_fields['id'];
- 
-		//display this element
-		if ( is_array( $args[0] ) )
-			$args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
-		else if ( is_object( $args[0] ) )
-			$args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
-		$cb_args = array_merge( array(&$output, $element, $depth), $args);
-		call_user_func_array(array(&$this, 'start_el'), $cb_args);
- 
-		$id = $element->$id_field;
- 
-		// descend only when the depth is right and there are childrens for this element
-		if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
- 
-			foreach( $children_elements[ $id ] as $child ){
- 
-				if ( !isset($newlevel) ) {
-					$newlevel = true;
-					//start the child delimiter
-					$cb_args = array_merge( array(&$output, $depth), $args);
-					call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
-				}
-				$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
-			}
-			unset( $children_elements[ $id ] );
-		}
- 
-		if ( isset($newlevel) && $newlevel ){
-			//end the child delimiter
-			$cb_args = array_merge( array(&$output, $depth), $args);
-			call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
-		}
- 
-		//end this element
-		$cb_args = array_merge( array(&$output, $element, $depth), $args);
-		call_user_func_array(array(&$this, 'end_el'), $cb_args);
- 
-	}
- 
-}
-
-register_nav_menus( array(
-    'primary' => __( 'Primary Menu', 'infi'),
-    'secondary' => __( 'Secondary Menu', 'infi' ),
- ) );
-
-//time ago
-add_filter('the_time', 'dynamictime');
- function dynamictime() {
-   global $post;
-   $date = $post->post_date;
-   $time = get_post_time('G', true, $post);
-   $mytime = time() - $time;
-   if($mytime < 60){
-     $mytimestamp = __('Just now');
-   }else{
-     $mytimestamp = sprintf(__('%s ago'), human_time_diff($time));
-   }
-   return $mytimestamp;
- }
-
-/*hideshow comments*/
-function hideshowComments () {
-
-   $linkText1 = __("Comments", "hideshowcomments");
-   $linkText2 = __("", "hideshowcomments");
-   $relinkText = __("Hide Comments", "hideshowcomments");
-
-   $show = $_GET['show'];
-echo "
-<script type=\"text/javascript\"> ";
-
-   if($show == 'true'){ // show comments when coming from index.php
-	echo "var currLayerId = \"hide\";\n";
-	$showLink = 'display:none';
-	$hideLink = 'display:block';
-   }
-   else if($show == NULL) {
-      // if there is no query string, hide comments like normal
-	echo "var currLayerId = \"show\";\n";
-	$showLink = 'display:block';
-	$hideLink = 'display:none';
-   }
-
-echo "       // create javascript functions
-function togLayer(id) {
-   if(currLayerId) setDisplay(currLayerId, \"none\");
-   if(id)setDisplay(id, \"block\");
-   currLayerId = id;
-}
-
-function setDisplay(id,value) {
-   var elm = document.getElementById(id);
-   elm.style.display = value;
-}
-</script>
-
-<div id=\"show\" style=\"".$showLink.";\" class=\"feedback2\">
-<a href=\"#\" style=\"text-decoration:none;\" onclick=\"togLayer('hide');return false;\" title=\"\">",
-$linkText1, " (", comments_number('0','1','%'), ") ", $linkText2,
-"</a>
-</div>
-
-<div id=\"hide\" style=\"".$hideLink.";padding:0;\">
-<div class=\"hideCommentsLink\"><a href=\"#\" style=\"text-decoration:none;\" onclick=\"togLayer('show');return false;\" title=\"\">",
-$relinkText,
-"</a></div>
-", comments_template(), "</div>";
-}
-
-
-/*get featured posts*/
-function getPostViews($postID){
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-        return "0 View";
+    //Registering JavaScript
+    function infi_scripts_scriptminjs(){
+        wp_enqueue_script( 'scriptmin', get_template_directory_uri() . '/assets/js/script.min.js', array( 'jquery' ) );
     }
-    return $count.' Views';
-}
-function setPostViews($postID) {
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        $count = 0;
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-    }else{
-        $count++;
-        update_post_meta($postID, $count_key, $count);
+
+    add_action( 'wp_footer', 'infi_scripts_scriptminjs' );
+
+    class infi_BootstrapNavMenuWalker extends Walker_Nav_Menu {
+
+
+        function start_lvl( &$output, $depth = 0, $args = array() ) {
+
+            $indent = str_repeat( "\t", $depth );
+            $submenu = ($depth > 0) ? ' sub-menu' : '';
+            $output	   .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
+
+        }
+
+        function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+
+            $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+            $li_attributes = '';
+            $class_names = $value = '';
+
+            $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+
+            // managing divider: add divider class to an element to get a divider before it.
+            $divider_class_position = array_search('divider', $classes);
+            if($divider_class_position !== false){
+                $output .= "<li class=\"divider\"></li>\n";
+                unset($classes[$divider_class_position]);
+            }
+
+            $classes[] = ($args->has_children) ? 'dropdown' : '';
+            $classes[] = ($item->current || $item->current_item_ancestor) ? 'active' : '';
+            $classes[] = 'menu-item-' . $item->ID;
+            if($depth && $args->has_children){
+                $classes[] = 'dropdown-submenu';
+            }
+
+
+            $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+            $class_names = ' class="' . esc_attr( $class_names ) . '"';
+
+            $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+            $id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+
+            $output .= $indent . '<li' . $id . $value . $class_names . $li_attributes . '>';
+
+            $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+            $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+            $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+            $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+            $attributes .= ($args->has_children) 	    ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+
+            $item_output = $args->before;
+            $item_output .= '<a'. $attributes .'>';
+            $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+            $item_output .= ($depth == 0 && $args->has_children) ? ' <b class="caret"></b></a>' : '</a>';
+            $item_output .= $args->after;
+
+
+            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+        }
+
+
+        function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+            //v($element);
+            if ( !$element )
+                return;
+
+            $id_field = $this->db_fields['id'];
+
+            //display this element
+            if ( is_array( $args[0] ) )
+                $args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
+            else if ( is_object( $args[0] ) )
+                $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
+            $cb_args = array_merge( array(&$output, $element, $depth), $args);
+            call_user_func_array(array(&$this, 'start_el'), $cb_args);
+
+            $id = $element->$id_field;
+
+            // descend only when the depth is right and there are childrens for this element
+            if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
+
+                foreach( $children_elements[ $id ] as $child ){
+
+                    if ( !isset($newlevel) ) {
+                        $newlevel = true;
+                        //start the child delimiter
+                        $cb_args = array_merge( array(&$output, $depth), $args);
+                        call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
+                    }
+                    $this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
+                }
+                unset( $children_elements[ $id ] );
+            }
+
+            if ( isset($newlevel) && $newlevel ){
+                //end the child delimiter
+                $cb_args = array_merge( array(&$output, $depth), $args);
+                call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
+            }
+
+            //end this element
+            $cb_args = array_merge( array(&$output, $element, $depth), $args);
+            call_user_func_array(array(&$this, 'end_el'), $cb_args);
+
+        }
+
     }
-}
-// Remove issues with prefetching adding extra views
-remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+    add_action( 'after_setup_theme', 'infi_setup' );
+
+    function infi_setup(){
+            register_nav_menus( array(
+                    'primary' => __( 'Primary Menu', 'infi'),
+            ) );
+    }
 
 
-//Add featured image to RSS feed
-//http://wpsnipp.com/index.php/functions-php/add-featured-image-rss-feed/
-add_filter( 'the_content', 'featured_image_in_feed' );
-function featured_image_in_feed( $content ) {
-    global $post;
-    if( is_feed() ) {
-        if ( has_post_thumbnail( $post->ID ) ){
-            $output = get_the_post_thumbnail( $post->ID, 'medium', array( 'style' => 'float:right; margin:0 0 10px 10px;' ) );
-            $content = $output . $content;
+    function infi_theme_customizer( $wp_customize ) {
+
+    // Logo upload
+        $wp_customize->add_section( 'infi_logo_section' , array(
+            'title'       => __( 'Logo', 'infi' ),
+            'priority'    => 30,
+            'description' => 'Upload a logo to replace the default site name and description in the header',
+        ) );
+        $wp_customize->add_setting( 'infi_logo',
+        array(
+        'sanitize_callback' => 'esc_url_raw'
+        ));
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'infi_logo', array(
+            'label'        => __( 'Logo', 'infi' ),
+            'section'    => 'infi_logo_section',
+            'settings'   => 'infi_logo',
+        ) ) );
+
+    }
+
+    add_action('customize_register', 'infi_theme_customizer');
+
+    // Add A Favicon
+    function infi_blog_favicon( $wp_customize) {
+         $wp_customize->add_section( 'infi_favicon_section' , array(
+            'title'       => __( 'Favicon', 'infi' ),
+            'priority'    => 30,
+            'description' => 'Upload a favicon for your website',
+        ) );
+        $wp_customize->add_setting( 'infi_favicon',
+        array(
+        'sanitize_callback' => 'esc_url_raw'
+        ));
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'infi_favicon', array(
+            'label'        => __( 'Favicon', 'infi' ),
+            'section'    => 'infi_favicon_section',
+            'settings'   => 'infi_favicon',
+        ) ) );
+    }
+    
+    add_action('customize_register', 'infi_blog_favicon');
+
+
+    // Register Theme Features
+    function infi_features()  {
+
+	// Add theme support for Automatic Feed Links
+	add_theme_support( 'automatic-feed-links' );
+
+	// Add theme support for Featured Images
+	add_theme_support( 'post-thumbnails' );
+
+	// Add theme support for HTML5 Semantic Markup
+	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'caption' ) );
+
+	// Add theme support for document Title tag
+	add_theme_support( 'title-tag' );
+
+    }
+
+    // Hook into the 'after_setup_theme' action
+    add_action( 'after_setup_theme', 'infi_features' );
+
+
+    if ( ! isset( $content_width ) )
+        $content_width = 600;
+
+
+    //Custom Comment Form
+    add_filter( 'comment_form_default_fields', 'infi_comment_form_fields' );
+    
+    function infi_comment_form_fields( $fields ) {
+        $commenter = wp_get_current_commenter();
+
+        $req      = get_option( 'require_name_email' );
+        $aria_req = ( $req ? " aria-required='true'" : '' );
+        $html5    = current_theme_supports( 'html5', 'comment-form' ) ? 1 : 0;
+
+        $fields   =  array(
+            'author' => '<div class="col-md-12">' .
+                        '<div class="row clearfix">' .
+                        '<div class="col-md-6">' .
+                        '<div class="form-group comment-form-author">' .
+                        '<input class="form-control" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder="Name (required)"/></div></div>',
+            'email'  => '<div class="col-md-6">' .
+                        '<div class="form-group comment-form-email">' .
+                        '<input class="form-control" id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="Email (required)"/></div></div></div>',
+            'url'    => '<div class="col-md-12">' .
+                        '<div class="row clearfix">' .
+                        '<div class="form-group comment-form-url">' .
+                        '<input class="form-control" id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="Website"/></div></div></div>',
+        );
+
+        return $fields;
+    }
+
+    add_filter( 'comment_form_defaults', 'infi_comment_form' );
+
+    function infi_comment_form( $args ) {
+        $args['comment_field'] = '<div class="col-md-12">
+                                    <div class="row clearfix">
+                                     <div class="form-group comment-form-comment">
+                                        <textarea class="form-control" id="comment" name="comment" cols="45" rows="4" aria-required="true" placeholder="Write something cool"></textarea>
+                                     </div>
+                                    </div>
+                                  </div></div>';
+        return $args;
+    }
+
+    add_action('comment_form', 'infi_comment_button' );
+
+    function infi_comment_button() {
+        echo '<div class="col-md-12">
+                  <button class="btn btn-default" type="submit">' . __( 'Submit' ) . '</button></div>';
+    }
+
+
+    //Prevent YouTube Videos From Overlapping Content
+    function add_video_wmode_transparent($html, $url, $attr) {
+        if ( strpos( $html, "<embed src=" ) !== false )
+           { return str_replace('</param><embed', '</param><param name="wmode" value="opaque"></param><embed wmode="opaque" ', $html); }
+        elseif ( strpos ( $html, 'feature=oembed' ) !== false )
+           { return str_replace( 'feature=oembed', 'feature=oembed&wmode=opaque', $html ); }
+        else
+           { return $html; }
+    }
+
+    add_filter( 'embed_oembed_html', 'add_video_wmode_transparent', 10, 3);
+
+    //Adding Verela Round Font
+    function infi_varela_font() {
+        wp_register_style('infi-varela-font', 'http://fonts.googleapis.com/css?family=Varela+Round');
+        wp_enqueue_style( 'infi-varela-font');
+    }
+
+    add_action('wp_print_styles', 'infi_varela_font');
+
+
+    function infi_comments_callback( $comment, $args, $depth ) {
+        $GLOBALS['comment'] = $comment;
+
+?>
+
+                                <!-- row -->
+                                <div class="row clearfix" id="comment-<?php comment_ID(); ?>">
+                                    
+                                    <div <?php comment_class(); ?>>
+                                    
+                                        <!-- col-md-2 -->
+                                        <div class="col-md-2">
+
+                                            <!-- thumbnail -->
+                                            <div class="commenter-avatar img-responsive">
+                                                <?php echo get_avatar( $comment ); ?>
+                                            </div>
+                                            <!-- /.thumbnail -->
+
+                                        </div>
+                                        <!-- /.col-md-2 -->
+
+                                        <div class="col-md-10">
+
+                                            <!-- panel panel-default -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <strong><?php comment_author(); ?></strong> 
+                                                    <span class="text-muted">commented on <?php comment_time('l, F jS, Y') ?></span>
+                                                </div>
+
+                                                <!-- panel-body -->
+                                                <div class="panel-body comment-body-paragraph">
+                                                    <?php comment_text(); ?>
+                                                </div>
+                                                <!-- /.panel-body -->
+
+                                                <!-- panel-footer -->
+                                                <div class="panel-footer">
+                                                    <div class="reply">
+                                                        <?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'infi' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+                                                    </div>
+                                                </div>
+                                                <!-- /.panel-footer -->
+
+                                            </div>
+                                            <!-- /.panel panel-default -->
+
+                                        </div>
+                                        <!-- /col-md-10 -->
+                                    
+                                    </div>
+                                    
+                                </div>
+                                <!-- /.row -->
+
+<?php
+
+    }
+
+
+    //Custom Excerpt
+    function infi_excerpt_length( $length ) {
+        return 20;
+    }
+
+    add_filter( 'excerpt_length', 'infi_excerpt_length', 999 );
+
+    function infi_excerpt_more( $more ) {
+        //return '...';
+        return '... <br><br> <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More ', 'infi') . '</a>';
+    }
+
+    add_filter('excerpt_more', 'infi_excerpt_more');
+
+
+    //Customizing The Footer Widgets
+    function infi_footer_widgets_init() {
+        register_sidebar( array(
+            'name' => 'Footer Sidebar 1',
+            'id' => 'footer-sidebar-1',
+            'description' => 'Appears in the footer area',
+            'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+        register_sidebar( array(
+            'name' => 'Footer Sidebar 2',
+            'id' => 'footer-sidebar-2',
+            'description' => 'Appears in the footer area',
+            'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+        register_sidebar( array(
+            'name' => 'Footer Sidebar 3',
+            'id' => 'footer-sidebar-3',
+            'description' => 'Appears in the footer area',
+            'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+        register_sidebar( array(
+            'name' => 'Footer Sidebar 4',
+            'id' => 'footer-sidebar-4',
+            'description' => 'Appears in the footer area',
+            'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+        register_sidebar( array(
+            'name' => 'Main Sidebar',
+            'id' => 'main-sidebar',
+            'description' => 'Appears in the right sidebar area',
+            'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        ) );
+    }
+
+    add_action( 'widgets_init', 'infi_footer_widgets_init' );
+
+
+    //Use SVG Images
+    function infi_mime_types($mimes) {
+      $mimes['svg'] = 'image/svg+xml';
+      return $mimes;
+    }
+
+    add_filter('upload_mimes', 'infi_mime_types');
+
+    //WordPress Admin Area SVG Fix (https://css-tricks.com/snippets/wordpress/allow-svg-through-wordpress-media-uploader/)
+    function infi_custom_admin_head() {
+      $css = '';
+
+      $css = 'td.media-icon img[src$=".svg"] { width: 100% !important; height: auto !important; }';
+
+      echo '<style type="text/css">'.$css.'</style>';
+    }
+
+    add_action('admin_head', 'infi_custom_admin_head');
+
+    add_theme_support( 'admin-bar', array( 'callback' => 'infi_adminbar_cb') );
+
+    function infi_adminbar_cb(){
+        echo '<style>#adminbar {  margin-top: -32px; top: -33px; }, .canvas { margin-top: 32px; }</style>';
+    }
+
+    //Remove string version from css and js
+    function infi_remove_script_version( $src ){
+        return remove_query_arg( 'ver', $src );
+    }
+
+    add_filter( 'script_loader_src', 'infi_remove_script_version' );
+    add_filter( 'style_loader_src', 'infi_remove_script_version' );
+
+    //Defer loading of javascript files
+    function infi_defer_parsing_of_js ( $url ) {
+        if ( FALSE === strpos( $url, '.js' ) ) return $url;
+        if ( strpos( $url, 'jquery.js' ) ) return $url;
+        return "$url' defer ";
+    }
+
+    add_filter( 'clean_url', 'infi_defer_parsing_of_js', 11, 1 );
+
+    /**
+     * Load Enqueued Scripts in the Footer
+     *
+     * Automatically move JavaScript code to page footer, speeding up page loading time.
+     */
+    function footer_enqueue_scripts() {
+       remove_action('wp_head', 'wp_print_scripts');
+        remove_action('wp_head', 'wp_print_head_scripts', 9);
+        remove_action('wp_head', 'wp_enqueue_scripts', 1);
+        add_action('wp_footer', 'wp_print_scripts', 5);
+        add_action('wp_footer', 'wp_enqueue_scripts', 5);
+        add_action('wp_footer', 'wp_print_head_scripts', 5);
+    }
+    add_action('after_setup_theme', 'footer_enqueue_scripts');
+
+
+    class infi_HTML_Compression
+    {
+        // Settings
+        protected $compress_css = true;
+        protected $compress_js = true;
+        protected $info_comment = true;
+        protected $remove_comments = true;
+
+        // Variables
+        protected $html;
+        public function __construct($html)
+        {
+            if (!empty($html))
+            {
+                $this->parseHTML($html);
+            }
+        }
+        public function __toString()
+        {
+            return $this->html;
+        }
+        protected function bottomComment($raw, $compressed)
+        {
+            $raw = strlen($raw);
+            $compressed = strlen($compressed);
+
+            $savings = ($raw-$compressed) / $raw * 100;
+
+            $savings = round($savings, 2);
+
+            return '<!--HTML compressed, size saved '.$savings.'%. From '.$raw.' bytes, now '.$compressed.' bytes-->';
+        }
+        protected function minifyHTML($html)
+        {
+            $pattern = '/<(?<script>script).*?<\/script\s*>|<(?<style>style).*?<\/style\s*>|<!(?<comment>--).*?-->|<(?<tag>[\/\w.:-]*)(?:".*?"|\'.*?\'|[^\'">]+)*>|(?<text>((<[^!\/\w.:-])?[^<]*)+)|/si';
+            preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);
+            $overriding = false;
+            $raw_tag = false;
+            // Variable reused for output
+            $html = '';
+            foreach ($matches as $token)
+            {
+                $tag = (isset($token['tag'])) ? strtolower($token['tag']) : null;
+
+                $content = $token[0];
+
+                if (is_null($tag))
+                {
+                    if ( !empty($token['script']) )
+                    {
+                        $strip = $this->compress_js;
+                    }
+                    else if ( !empty($token['style']) )
+                    {
+                        $strip = $this->compress_css;
+                    }
+                    else if ($content == '<!--wp-html-compression no compression-->')
+                    {
+                        $overriding = !$overriding;
+
+                        // Don't print the comment
+                        continue;
+                    }
+                    else if ($this->remove_comments)
+                    {
+                        if (!$overriding && $raw_tag != 'textarea')
+                        {
+                            // Remove any HTML comments, except MSIE conditional comments
+                            $content = preg_replace('/<!--(?!\s*(?:\[if [^\]]+]|<!|>))(?:(?!-->).)*-->/s', '', $content);
+                        }
+                    }
+                }
+                else
+                {
+                    if ($tag == 'pre' || $tag == 'textarea')
+                    {
+                        $raw_tag = $tag;
+                    }
+                    else if ($tag == '/pre' || $tag == '/textarea')
+                    {
+                        $raw_tag = false;
+                    }
+                    else
+                    {
+                        if ($raw_tag || $overriding)
+                        {
+                            $strip = false;
+                        }
+                        else
+                        {
+                            $strip = true;
+
+                            // Remove any empty attributes, except:
+                            // action, alt, content, src
+                            $content = preg_replace('/(\s+)(\w++(?<!\baction|\balt|\bcontent|\bsrc)="")/', '$1', $content);
+
+                            // Remove any space before the end of self-closing XHTML tags
+                            // JavaScript excluded
+                            $content = str_replace(' />', '/>', $content);
+                        }
+                    }
+                }
+
+                if ($strip)
+                {
+                    $content = $this->removeWhiteSpace($content);
+                }
+
+                $html .= $content;
+            }
+
+            return $html;
+        }
+
+        public function parseHTML($html)
+        {
+            $this->html = $this->minifyHTML($html);
+
+            if ($this->info_comment)
+            {
+                $this->html .= "\n" . $this->bottomComment($html, $this->html);
+            }
+        }
+
+        protected function removeWhiteSpace($str)
+        {
+            $str = str_replace("\t", ' ', $str);
+            $str = str_replace("\n",  '', $str);
+            $str = str_replace("\r",  '', $str);
+
+            while (stristr($str, '  '))
+            {
+                $str = str_replace('  ', ' ', $str);
+            }
+
+            return $str;
         }
     }
-    return $content;
-}
 
-/**
- * Theme customizer with real-time update
- * Very helpful: http://ottopress.com/2012/theme-customizer-part-deux-getting-rid-of-options-pages/
- *
- * @since 1.5
- */
-function infi_theme_customizer( $wp_customize ) {
+    function infi_html_compression_finish($html)
+    {
+        return new infi_HTML_Compression($html);
+    }
 
-// Logo upload
-    $wp_customize->add_section( 'infi_logo_section' , array(
-	    'title'       => __( 'Logo', 'infi' ),
-	    'priority'    => 30,
-	    'description' => 'Upload a logo to replace the default site name and description in the header',
-	) );
-	$wp_customize->add_setting( 'infi_logo' );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'infi_logo', array(
-		'label'        => __( 'Logo', 'infi' ),
-		'section'    => 'infi_logo_section',
-		'settings'   => 'infi_logo',
-	) ) );
+    function infi_html_compression_start()
+    {
+        ob_start('infi_html_compression_finish');
+    }
+    add_action('get_header', 'infi_html_compression_start');
 
-}
-add_action('customize_register', 'infi_theme_customizer');
-
-// add a favicon to your
-function blog_favicon( $wp_customize) {
-     $wp_customize->add_section( 'infi_favicon_section' , array(
-	    'title'       => __( 'Favicon', 'infi' ),
-	    'priority'    => 30,
-	    'description' => 'Upload a favicon for your website',
-	) );
-	$wp_customize->add_setting( 'infi_favicon' );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'infi_favicon', array(
-		'label'        => __( 'Favicon', 'infi' ),
-		'section'    => 'infi_favicon_section',
-		'settings'   => 'infi_favicon',
-	) ) );
-}
-add_action('customize_register', 'blog_favicon');
-
-// Create Slider Post Type
-require( get_template_directory() . '/inc/slider/slider_post_type.php' );
-// Create Slider
-require( get_template_directory() . '/inc/slider/slider.php' );
-
-
-add_theme_support('html5', array('search-form'));
-
-//postnav
-function infi_numeric_posts_nav() {
-
-	if( is_singular() )
-		return;
-
-	global $wp_query;
-
-	/** Stop execution if there's only 1 page */
-	if( $wp_query->max_num_pages <= 1 )
-		return;
-
-	$paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
-	$max   = intval( $wp_query->max_num_pages );
-
-	/**	Add current page to the array */
-	if ( $paged >= 1 )
-		$links[] = $paged;
-
-	/**	Add the pages around the current page to the array */
-	if ( $paged >= 3 ) {
-		$links[] = $paged - 1;
-		$links[] = $paged - 2;
-	}
-
-	if ( ( $paged + 2 ) <= $max ) {
-		$links[] = $paged + 2;
-		$links[] = $paged + 1;
-	}
-
-	echo '<div class="pagination"><ul class="pagination">' . "\n";
-
-	/**	Previous Post Link */
-	if ( get_previous_posts_link() )
-		printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
-
-	/**	Link to first page, plus ellipses if necessary */
-	if ( ! in_array( 1, $links ) ) {
-		$class = 1 == $paged ? ' class="active"' : '';
-
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
-
-
-	}
-
-	/**	Link to current page, plus 2 pages in either direction if necessary */
-	sort( $links );
-	foreach ( (array) $links as $link ) {
-		$class = $paged == $link ? ' class="active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
-	}
-
-
-
-	/**	Next Post Link */
-	if ( get_next_posts_link() )
-		printf( '<li>%s</li>' . "\n", get_next_posts_link() );
-
-	echo '</ul></div>' . "\n";
-
-}
-
-add_theme_support( 'automatic-feed-links' );
-
-add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'  ) );
-
-if ( ! isset( $content_width ) )
-	$content_width = 600;
-
-$defaults = array(
-	'default-color'          => '#83AAEE',
-	'default-image'          => '',
-	'wp-head-callback'       => '_custom_background_cb',
-	'admin-head-callback'    => '',
-	'admin-preview-callback' => ''
-);
-add_theme_support( 'custom-background', $defaults );
 
 
 ?>

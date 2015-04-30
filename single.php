@@ -1,101 +1,166 @@
+<!-- single.php -->
 <?php get_header(); ?>
-	<div class="row clearfix">
-		<div class="col-md-8 column">
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-                    <div class="post-category-header"><h4><?php the_category(' '); ?></h4></div><hr>
-                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                    <?php
-          setPostViews(get_the_ID());
-?>
+
+               <!-- row -->
+                <div class="row clearfix single-page-row">
                     
-                    <div class="post-wrapper single-page">
-                        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					   <div class="post-header single-page"><h2><?php the_title(); ?></h2></div>
-        <div class="if_container">
-            <div class="if_share-wrapper">
-                <div class="share clearfix">		
-                   <ul>
-
-                        <li class="sharetwitter"><a href="http://twitter.com/share?text=<?php the_title(); ?>&url=<?php the_permalink() ?>&via=<?php bloginfo( 'name' ); ?>" class="if_share-button tr" alt="Tweet This Post" title="Tweet This Post" target="_blank"><i class="fa fa-twitter"></i> Tweet</a></li>
-
-                        <li class="sharefacebook"><a href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>&t=<?php the_title(); ?>" class="if_share-button br"  alt="Share on Facebook" title="Share on Facebook" target="_blank" ><i class="fa fa-facebook"></i> Share</a></li>
-
-                        <li class="sharegoogle"><a href="https://plusone.google.com/_/+1/confirm?hl=en-US&url=<?php the_permalink() ?>"class="if_share-button tl" alt="Share on Google+" title="Share on Google+" target="_blank" ><i class="fa fa-google-plus"></i> Google+</a></li>
-
-</ul>
-                </div>
-            </div>
-        </div>
-                        <div class="post-image single-page"><?php if ( has_post_thumbnail() ) {
-the_post_thumbnail();
-} else { ?>
-<img src="<?php bloginfo('template_directory'); ?>/bootstrap/img/default-image.png" alt="<?php the_title(); ?>" />
-<?php } ?></div>
-                    </div>
-                 </div>
-				</div>
-			</div>
-			<div class="row clearfix single-page">
-				<div class="col-md-3 column">
-                    <center>
-                        <div class="author-image"><?php echo get_avatar( get_the_author_meta('email'), 'size here' ); ?></div>
-                        <div class="author-name"><?php the_author_posts_link(); ?></div>
-                        <div class="published">Published</div>
-                        <div class="post-time"><?php the_date(); ?></div>
-                        <div class="comments-count">Comments</div>
-                        <div class="post-comment-count"><?php comments_number(); ?></div>
-                        <div class="views-count">Views</div>
-                        <div class="post-views-count"><?php echo getPostViews(get_the_ID()); ?></div>
-                    </center>
-				</div>
-                <?php endwhile; else: ?>
-		<p><?php _e('Sorry, this page does not exist.'); ?></p>
-	<?php endif; ?>
-				<div class="col-md-9 column">
-					<div class="post-content single-page"><p><?php the_content(); ?></p></div>
-                    <div class="post-tags single-page"><p><?php the_tags(); ?></p> </div><hr>
-                    <div class="post-navigation btn btn-default">
-                        <div id="next-post-navigation">Next Post >> <?php if(get_adjacent_post(false, '', false)) {  next_post_link('%link'); }
-else { echo '<span style="color:#bbb;">"'.get_the_title().'" is the latest post </span>'; } ; ?></div>
-                    </div>
+                    <!-- the loop -->
                     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div class="row clearfix margin">
-        <div class="col-md-12">
-            <hr>
-               <div class="comment-section comment"><?php 
-$withcomments = "1";
-comments_template(); // Get wp-comments.php template ?></div>
-                <div class="comment-feed"><?php post_comments_feed_link('Comment Feed'); ?></div>
+                    
+                    <!-- column -->
+                    <div class="col-md-8">
+                    
+                        <!-- single-post-wrapper -->
+                        <div class="single-post-wrapper">
+
+                            <br>
+
+                            <!-- single-post-heading -->
+                            <div class="single-post-heading">
+                                <h1 class="text-center"><?php the_title(); ?></h1>
+                            </div>
+                            <!-- /.single-post-heading -->
+
+                            <br>
+
+                            <!-- single-post-meta -->
+                            <div class="single-post-meta-above">
+                                <ul class="nav nav-pills home">
+
+                                    <!-- single-post-author -->
+                                    <li class="single-post-author">
+                                        By <?php the_author_posts_link(); ?>
+                                    </li>
+                                    <!-- /.single-post-author -->
+
+                                    <!-- single-post-category -->
+                                    <li class="single-post-category">
+                                        in <?php the_category( ', ' ); ?>
+                                    </li>
+                                    <!-- /.single-post-category-->
+
+                                    <!-- single-post-date -->
+                                    <li class="single-post-date">
+                                        on <?php the_time( get_option( 'date_format' ) ); ?>
+                                    </li>
+                                    <!-- /.single-post-date-->
+
+                                </ul>
+                            </div>
+                            <!-- /.single-post-meta -->
+                            
+                            <br>
+
+                            <!-- single-post-body -->
+                            <div class="single-post-body">
+                                <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                                    <p><?php the_content('Read more...'); ?></p>
+                                    <?php wp_link_pages(); ?>
+                                </div>
+                            </div>
+                            <!-- /.single-post-body -->
+
+                            <br><hr>
+
+                            <!-- single-post-meta -->
+                            <div class="single-post-meta">
+                                <ul class="nav navbar-nav">
+
+                                    <!-- single-post-tag -->
+                                    <li class="single-post-tag">
+                                        <?php the_tags(); ?>
+                                    </li>
+                                    <!-- /.single-post-tag-->
+
+                                </ul>
+                            </div>
+                            <!-- /.single-post-meta -->
+                            
+                            <br><hr>
+                            
+                            <!-- single-post-author-details -->
+                            <div class="single-post-author-details">
+                                <div class="row clearfix">
+                                    <div class="col-md-2 img-responsive">
+                                        <?php echo get_avatar( get_the_author_meta( 'ID' )); ?>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h4 class="single-post-author-details-author-name"><?php the_author_meta('display_name'); ?></h4>
+                                        <p class="single-post-author-details-author-bio"><?php the_author_meta('description'); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.single-post-author-details -->
+
+                        </div>
+                        <!-- /.single-post-wrapper -->
+                        
+                        <!-- single-post-comments -->
+                        <div class="single-posts-comments">
+                            
+                            <!-- comments template -->
+                            <?php comments_template(); ?>
+                            
+                        </div>
+                        <!-- /.single-posts-comments -->
+                        
+                        <?php if ('open' == $post->comment_status) : ?>
+                        <!-- comment-text-box -->
+                        <div class="comment-text-box">
+                        
+                            <!-- comment-text-box-container -->
+                            <div class="comment-text-box-container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-container">
+                                            <?php comment_form(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- comment-text-box-container -->
+                            
+                        </div>
+                        <!-- /.comment-text-box -->
+                        
+                        <?php endif;?>
+
+                    </div>
+                    <!-- /.column -->
+                    
+                    <!-- column -->
+                    <div class="col-md-4">
+                        
+                        <!-- single-page-sidebar -->
+                        <div class="single-page-sidebar">
+
+                            <!-- sidebar -->
+                            <?php get_sidebar(); ?>
+                            
+                        </div>
+                        <!-- /.single-page-sidebar -->
+                    
+                    </div>
+                    <!-- /.column -->
+                    
+                    <?php endwhile; else : ?>
+                        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                    <?php endif; ?>
+                    <!-- /the loop -->
+                    
+                </div>
+                <!-- /.row -->
+                
             </div>
-	</div>
-                <?php endwhile; else: ?>
-		<p><?php _e('Sorry, this page does not exist.'); ?></p>
-	<?php endif; ?>
-				</div>
-			</div>
-        </div>
-        
-		<div class="col-md-4 column recent">
-			<div id="recent-posts">
-                <h4>Recent Posts</h4><hr>
-<?php $postslist = get_posts('numberposts=3&order=DESC'); foreach ($postslist as $post) : setup_postdata($post); ?>
-
-<div class="post-wrap single-page">
-    <div id="post-category">#<?php the_category(' '); ?></div>
-    <div class="recentpost-thumbnail single-page"><a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) {
-the_post_thumbnail();
-} else { ?>
-<img src="<?php get_template_directory_uri() ; ?>/bootstrap/img/default-image.png" alt="<?php the_title(); ?>" />
-<?php } ?></a></div>
-    <div class="recentpost-header single-page"><p><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p></div>
-    <div class="author-and-time"><div id="author-post"><?php the_author_posts_link(); ?></div><div id="time"><?php the_time(); ?></div></div>
-</div>
-
-<?php endforeach; ?>
-</div><!-- End Recent Posts -->
-		</div>
-        </div>
-
+            <!-- /.block-wrapper -->
     
+        </div>
+        <!-- /.container -->
+        
+    </div>
+    <!-- /.canvas -->
+    <script>
+
+</script>
+
 <?php get_footer(); ?>

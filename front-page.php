@@ -1,64 +1,101 @@
-<?php get_header(); ?>
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<div class="row clearfix">
-				<div class="trending col-md-6 column">
-                    <h4>Editor's Pick</h4>
-                    <?php echo infi_slider_template(); ?>
-                    <h4>Trending</h4>
-                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                    <div class="post-header front-page">
-                        <div id="post-category">#<?php the_category(' '); ?></div>
-                        <a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) {
-the_post_thumbnail();
-} else { ?>
-<img src="<?php bloginfo('template_directory'); ?>/bootstrap/img/default-image.png" alt="<?php the_title(); ?>" />
-<?php } ?><h1><?php the_title(); ?></h1></a>
-                        <div class="author-and-time">
-                            <div id="author-post"><?php the_author_posts_link(); ?></div>
-                            <div id="time"><?php the_time(); ?></div>
-                        </div>
-                    </div>
-                    <?php endwhile; else: ?>
-<p><?php _e('Sorry, this page does not exist.'); ?></p>
-<?php endif; ?>
-                    <?php infi_numeric_posts_nav(); ?>
 
-				</div>
-				<div class="featured col-md-3 column">
-                    <h4>Featured</h4>
-                    <?php query_posts('meta_key=post_views_count&orderby=meta_value_num&order=DESC');?>
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php get_header(); ?>
+
+                <!-- row -->
+                <?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0 ?>
+                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+				    if ($ink_count == 0 ) {echo "<div class='row-".$ink_row_count." row'>";}
+			     ?>
                     
-                    <div class="featured-post front-page">
-                        <div id="post-category">#<?php the_category(' '); ?></div>
-                        <div class="heading front-page"><a href="<?php the_permalink() ?>" target="_parent"><?php if ( has_post_thumbnail() ) {
-the_post_thumbnail();
-} else { ?>
-<img src="<?php bloginfo('template_directory'); ?>/bootstrap/img/default-image.png" alt="<?php the_title(); ?>" />
-<?php } ?><h1><?php the_title(); ?></a></h1></div>
-                        <div class="author-and-time"><div id="author-post"><?php the_author_posts_link(); ?></div><div id="time"><?php the_time(); ?></div></div>
+                    <!-- column -->
+                    <div class="col-md-4 column post-wrap">
+
+                        <!-- post-wrapper -->
+                        <div class="post-wrapper">
+
+                            <!-- post-container -->
+                            <div class="post-container">
+                                
+                                <!-- post-container-category -->
+                                <?php
+                                    $category = get_the_category();
+                                ?>
+                                <div class="post-container-category" id="<?php echo $category[0]->cat_name; ?>">
+                                    <?php the_category( ', ' ); ?>
+                                </div>
+                                <!-- post-container-category -->
+                                
+                                <!-- post-container-heading -->
+                                <div class="post-container-heading">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <h2><?php the_title(); ?></h2>
+                                    </a>
+                                </div>
+                                <!-- /.post-container-heading -->
+                                
+                                <!-- post-container-excerpt -->
+                                <div class="post-container-excerpt">
+                                    <p><?php the_excerpt(); ?></p>
+                                </div>    
+                                <!-- /.post-container-excerpt -->
+                                
+                                <!-- post-container-tabbed-content -->
+                                <div class="post-container-tabbed-content">
+                                    <div class="tabbable-panel">
+                                        <div class="tabbable-line tabs-below">
+                                            <ul class="nav nav-pills home">
+                                                <li>By <?php the_author_posts_link(); ?></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>   
+                                <!-- /.post-container-tabbed-content -->                  
+                                
+                            </div>
+                            <!-- /.post-container -->
+
+                        </div>
+                        <!-- /.post-wrapper -->
+
                     </div>
-                    <?php endwhile; else: ?>
-<p><?php _e('Sorry, this page does not exist.'); ?></p>
-<?php endif; ?>
-				</div>
-				<div class="recent col-md-3 column">
-                     <h4>Recent Posts</h4>
-<?php $postslist = get_posts('numberposts=10&order=DESC'); foreach ($postslist as $post) : setup_postdata($post); ?>
-<div class="post-wrap front-page">
-    <div class="recentpost-thumbnail front-page"><a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) {
-the_post_thumbnail();
-} else { ?>
-<img src="<?php bloginfo('template_directory'); ?>/bootstrap/img/default-image.png" alt="<?php the_title(); ?>" />
-<?php } ?></a></div>
-    <div class="recentpost-header front-page"><p><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p></div>
-</div>
-<?php endforeach; ?>
-<!-- End Recent Posts -->
-				</div>
-			</div>
-		</div>
-	</div>
+                    <!-- /.column -->
+                    
+                <?php 
+                    if ($ink_count == 2 )
+                        {
+                            echo "</div>";
+                            $ink_count=0;
+                            $ink_row_count++;
+                        }
+                    else {	
+                        $ink_count++;
+                    }
+                    endwhile; else : ?> 
+<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                    <?php endif; ?>
+                <!-- /.row -->
+                    
+                </div>
+                <!-- /the loop -->
+                    
+                <!-- page-pagination -->
+                <div class="page-pagination">
+                    <nav>
+                        <ul class="pager">
+                            <li class="previous"> <?php next_posts_link( 'Older posts' ); ?></li>
+                            <li class="next"> <?php previous_posts_link( 'Newer posts' ); ?></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.page-pagination -->
+                
+            </div>
+            <!-- /.block-wrapper -->
+    
+        </div>
+        <!-- /.container -->
+        
+    </div>
+    <!-- /.canvas -->
 
 <?php get_footer(); ?>
