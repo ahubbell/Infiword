@@ -1,61 +1,49 @@
-<!-- page.php -->
+<?php
+/**
+ * The default tempalte for pages.
+ **/
+?>
+
 <?php get_header(); ?>
 
-               <!-- row -->
-                <div class="row clearfix single-page-row">
-                    
-                    <!-- the loop -->
-                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                    
-                    <!-- column -->
-                    <div class="col-md-8">
-                    
-                        <!-- single-post-wrapper -->
-                        <div class="single-post-wrapper">
+<!-- Row for main content area -->
+	<div class="small-12 large-8 columns" id="page-content" role="main">
+	
+	<?php /* Start loop */ ?>
+	<?php while (have_posts()) : the_post(); ?>
+		<article <?php post_class('page-card') ?> id="post-<?php the_ID(); ?>">
+			<header>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<?php foundationbuddy_entry_meta(); ?>
+			</header>
+			<div class="entry-content">
+				<?php the_content(); ?>
+			</div>
+			<footer>
+				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
+			</footer>
+		</article>
+	   <div class="separator"></div>
+        <?php if( is_single() ) { ?>
+        <div class="entry-author panel">
+			<div class="row">
+				<div class="large-9 columns">
+					<h4><?php the_author_posts_link(); ?></h4>
+					<p class="cover-description"><?php the_author_meta('description'); ?></p>
+				</div>
+                <div class="large-3 columns">
+					<?php echo get_avatar( get_the_author_meta('user_email'), 95 ); ?>
+				</div>
+			</div>
+		</div>
+        <div class="separator"></div>
+        <?php } ?>
+		<?php comments_template(); ?>
+	<?php endwhile; // End the loop ?>
 
-                            <br>
-
-                            <!-- single-post-heading -->
-                            <div class="single-post-heading">
-                                <h1 class="text-center"><?php the_title(); ?></h1>
-                            </div>
-                            <!-- /.single-post-heading -->
-
-                            <hr>
-
-                            <!-- single-post-body -->
-                            <div class="single-post-body">
-                                <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                                    <p><?php the_content('Read more...'); ?></p>
-                                    <?php wp_link_pages(); ?>
-                                </div>
-                            </div>
-                            <!-- /.single-post-body -->
-
-                        </div>
-                        <!-- /.single-post-wrapper -->
-
-                    </div>
-                    <!-- /.column -->
-                    
-                    <?php endwhile; else : ?>
-                        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                    <?php endif; ?>
-                    <!-- /the loop -->
-                    
-                </div>
-                <!-- /.row -->
-                
-            </div>
-            <!-- /.block-wrapper -->
-    
-        </div>
-        <!-- /.container -->
-        
-    </div>
-    <!-- /.canvas -->
-    <script>
-
-</script>
-
+	</div>
+	<aside id="sidebar" class="small-12 large-4 columns">
+        <?php get_sidebar(); ?>
+    </aside><!-- /#sidebar -->
+		
 <?php get_footer(); ?>

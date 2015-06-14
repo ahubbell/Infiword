@@ -1,6 +1,3 @@
-
-    <!-- search-container -->
-        <form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-            <input type="search" id="search-form" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" id="s" />
-        </form>
-    <!-- /.search-container -->
+<form role="search" method="get" id="searchform-header" action="<?php echo home_url('/'); ?>">
+    <input type="text" value="" name="s" id="s-header" placeholder="<?php esc_attr_e('Search', 'foundationbuddy'); ?>">
+</form>

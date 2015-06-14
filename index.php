@@ -1,101 +1,27 @@
+<?php
+/**
+ * The template for displaying posts in the index page.
+ **/
+?>
 
 <?php get_header(); ?>
 
-                <!-- row -->
-                <?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0 ?>
-                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-				    if ($ink_count == 0 ) {echo "<div class='row-".$ink_row_count." row'>";}
-			     ?>
-                    
-                    <!-- column -->
-                    <div class="col-md-4 column post-wrap">
+<!-- front-page slider -->
+<?php if ( get_theme_mod('foundationbuddy_front_page_slider') ) { ?> 
+<?php get_template_part( 'templates/front', 'page-slider' ); ?>
+<?php } ?>
+<!-- /front-page slider -->
 
-                        <!-- post-wrapper -->
-                        <div class="post-wrapper">
-
-                            <!-- post-container -->
-                            <div class="post-container">
-                                
-                                <!-- post-container-category -->
-                                <?php
-                                    $category = get_the_category();
-                                ?>
-                                <div class="post-container-category" id="<?php echo $category[0]->cat_name; ?>">
-                                    <?php the_category( ', ' ); ?>
-                                </div>
-                                <!-- post-container-category -->
-                                
-                                <!-- post-container-heading -->
-                                <div class="post-container-heading">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <h2><?php the_title(); ?></h2>
-                                    </a>
-                                </div>
-                                <!-- /.post-container-heading -->
-                                
-                                <!-- post-container-excerpt -->
-                                <div class="post-container-excerpt">
-                                    <p><?php the_excerpt(); ?></p>
-                                </div>    
-                                <!-- /.post-container-excerpt -->
-                                
-                                <!-- post-container-tabbed-content -->
-                                <div class="post-container-tabbed-content">
-                                    <div class="tabbable-panel">
-                                        <div class="tabbable-line tabs-below">
-                                            <ul class="nav nav-pills home">
-                                                <li>By <?php the_author_posts_link(); ?></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>   
-                                <!-- /.post-container-tabbed-content -->                  
-                                
-                            </div>
-                            <!-- /.post-container -->
-
-                        </div>
-                        <!-- /.post-wrapper -->
-
-                    </div>
-                    <!-- /.column -->
-                    
-                <?php 
-                    if ($ink_count == 2 )
-                        {
-                            echo "</div>";
-                            $ink_count=0;
-                            $ink_row_count++;
-                        }
-                    else {	
-                        $ink_count++;
-                    }
-                    endwhile; else : ?> 
-<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                    <?php endif; ?>
-                <!-- /.row -->
-                    
-                </div>
-                <!-- /the loop -->
-                    
-                <!-- page-pagination -->
-                <div class="page-pagination">
-                    <nav>
-                        <ul class="pager">
-                            <li class="previous"> <?php next_posts_link( 'Older posts' ); ?></li>
-                            <li class="next"> <?php previous_posts_link( 'Newer posts' ); ?></li>
-                        </ul>
-                    </nav>
-                </div>
-                <!-- /.page-pagination -->
-                
-            </div>
-            <!-- /.block-wrapper -->
-    
+<!-- Row for main content area -->
+<?php if ( get_theme_mod('foundationbuddy_front_page_layout_pinterest') == 'off' ) { ?>
+    <?php get_template_part( 'templates/blog', 'front-page' ); ?>
+<?php } else { ?>
+    <?php if ( get_theme_mod('foundationbuddy_masonry_front_page') == 'off' ) { ?> 
+    <?php get_template_part( 'templates/no', 'masonry-front-page' ); ?>
         </div>
-        <!-- /.container -->
-        
-    </div>
-    <!-- /.canvas -->
-
+    <?php } else { ?>
+    <?php get_template_part( 'templates/masonry', 'front-page' ); ?>
+    <?php } ?>
+<?php } ?>
+		
 <?php get_footer(); ?>
