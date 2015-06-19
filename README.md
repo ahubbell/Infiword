@@ -1,9 +1,7 @@
 Infiword
 ==========
 
-A simple Twitter Bootstrap based WordPress theme
-
-The 2014 theme from Infismash - Creativity that inspires you! This theme is perfect for any sports, movie or any review website. With out of box features like social sharing, improved commenting system, this theme is likely to blow your mind away!
+Infiword is a versatile HTML5 responsive WordPress theme based on ZURB's Foundation. Infiword is mostly suitable for a magazine layout website. Infiword is highly customizable through the WordPress Customizer option.
 
 Requirements
 ============
@@ -18,11 +16,4 @@ If you find a bug or have enhancements for the system, please report them via th
 Credits
 =======
 
-Twitter Bootstrap
-Font Awesome
-FlexSlider
-
-Roadmap
-=======
-
-1. Compress files
+See readme.txt for details.
