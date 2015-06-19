@@ -18,6 +18,14 @@
 	<!-- Feed -->
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo esc_url( home_url() ); ?>/feed/">
     
+    <!-- Favicon -->
+    <?php 
+        if ( get_theme_mod('foundationbuddy_favicon') ) {                                                                                      
+            $favicon = '<link rel="Shortcut Icon" type="image/x-icon" href='.get_theme_mod('foundationbuddy_favicon').'>';
+            echo $favicon;
+        } 
+    ?>
+    
     <!-- Add custom CSS to header -->
     <?php
         if ( get_theme_mod('foundationbuddy_header_custom_css') ) {

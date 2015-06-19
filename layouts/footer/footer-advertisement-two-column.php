@@ -7,19 +7,25 @@
 ?>
 
 <div class="large-6 columns">
-    <?php
+        <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ) {
-                $foundationbuddy_footer_advertisement_one = '<img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ).'">';
-                echo $foundationbuddy_footer_advertisement_one;
+                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' ) ) {
+                    $foundationbuddy_footer_advertisement_one_link = get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' );
+                }
+                    $foundationbuddy_footer_advertisement_one = '<a href="'. $foundationbuddy_footer_advertisement_one_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ).'"></a>';
+                    echo $foundationbuddy_footer_advertisement_one;
             }
         ?>
 </div>
 
 <div class="large-6 columns">
-    <?php
+        <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_two' ) ) {
-                $foundationbuddy_footer_advertisement_two = '<img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_two' ) ).'">';
-                echo $foundationbuddy_footer_advertisement_two;
+                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_two_link' ) ) {
+                    $foundationbuddy_footer_advertisement_two_link = get_theme_mod( 'foundationbuddy_footer_advertisement_two_link' );
+                }
+                    $foundationbuddy_footer_advertisement_two = '<a href="'. $foundationbuddy_footer_advertisement_two_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_two' ) ).'"></a>';
+                    echo $foundationbuddy_footer_advertisement_two;
             }
         ?>
 </div>

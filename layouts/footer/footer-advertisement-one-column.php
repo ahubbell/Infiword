@@ -9,8 +9,11 @@
 <div class="large-12 columns">
         <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ) {
-                $foundationbuddy_footer_advertisement_one = '<img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ).'">';
-                echo $foundationbuddy_footer_advertisement_one;
+                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' ) ) {
+                    $foundationbuddy_footer_advertisement_one_link = get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' );
+                }
+                    $foundationbuddy_footer_advertisement_one = '<a href="'. $foundationbuddy_footer_advertisement_one_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ).'"></a>';
+                    echo $foundationbuddy_footer_advertisement_one;
             }
         ?>
 </div>
