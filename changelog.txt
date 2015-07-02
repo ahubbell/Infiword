@@ -1,0 +1,39 @@
+﻿Theme Name:         Infiword
+Theme URI:          http://infismash.com/demos/wordpress/infiword
+Current Version:    2.0.4
+Author:             Nirmalya Ghosh
+Author URI:         http://infismash.com/
+Copyright:          (c) 2015 Nirmalya Ghosh
+
+In Production - 2.0.5
+===========================================================
+- Masonry implementation changed from HTML to Javascript
+- Moved init Javascript codes from footer to custom.js
+- Minor CSS edits
+- Added Fitvidsjs
+- Moved jqueryjs from header to footer
+- Added imageLoadedjs
+        - Customize the search bar
+        - Update the custom homepage
+        - Remove no-masonry option for the index page
+        - Customize the post-formats page (for gallery post format)
+        - Add documentation about the theme
+        - Edit the theme url and description
+        - Update the screenshot
+        - Add more color options
+        - Change default colors
+        - CSS cleanup
+
+June 25 2015 - 2.0.4
+===========================================================
+- Added Customizer option through Kirki toolkit (http://kirki.org/)
+- Updated readme.txt
+- Updated theme description
+
+June 24 2015 - 2.0.3
+===========================================================
+- Updated readme.txt
+
+June 9 2015 - 2.0.2
+===========================================================
+- Theme released

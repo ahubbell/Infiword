@@ -55,6 +55,13 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'description' => __( 'Edit the layout of the blog page of your website.', 'foundationbuddy' ),
     ) );
     
+    //Portfolio page panel
+    $wp_customize->add_panel( 'portfolio_page', array(
+        'priority'    => 10,
+        'title'       => __( 'Portfolio Page', 'foundationbuddy' ),
+        'description' => __( 'Edit the layout of the portfolio page of your website.', 'foundationbuddy' ),
+    ) );
+    
     //Woocommerce page panel
     $wp_customize->add_panel( 'woocommerce_page', array(
         'priority'    => 10,
@@ -105,14 +112,6 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'panel'       => 'general',
         'description' => __( 'Change the height and width of your logo.', 'foundationbuddy' ),
     ) );
-        
-    //Favicon section
-    $wp_customize->add_section( 'favicon_section' , array(
-        'title'       => __( 'Favicon', 'foundationbuddy' ),
-        'priority'    => 10,
-        'panel'       => 'general',
-        'description' => __( 'Upload a favicon for your website', 'foundationbuddy' ),
-    ) );
     
     //Search bar section
     $wp_customize->add_section( 'search_bar_section' , array(
@@ -140,14 +139,6 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'description' => __( 'Upload your custom header image. This header image will be shown on all the pages of the website.', 'foundationbuddy' ),
     ) );
     
-    //Custom CSS
-    $wp_customize->add_section( 'foundationbuddy_header_custom_css_section' , array(
-        'title'       => __( 'Add custom CSS to the header', 'foundationbuddy' ),
-        'priority'    => 10,
-        'panel'       => 'header',
-        'description' => __( 'Add custom CSS to the header', 'foundationbuddy' ),
-    ) );
-    
     /* Footer */
     
     //Footer ads count section
@@ -163,7 +154,7 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'title'       => __( 'Advertisement 1', 'foundationbuddy' ),
         'priority'    => 10,
         'panel'       => 'footer',
-        'description' => __( 'Upload a favicon for your website', 'foundationbuddy' ),
+        'description' => __( 'Upload a image for the advertisement (one) section.', 'foundationbuddy' ),
     ) );
     
     //Footer Ads (two)
@@ -171,7 +162,7 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'title'       => __( 'Advertisement 2', 'foundationbuddy' ),
         'priority'    => 10,
         'panel'       => 'footer',
-        'description' => __( 'Upload a favicon for your website', 'foundationbuddy' ),
+        'description' => __( 'Upload a image for the advertisement (two) section.', 'foundationbuddy' ),
     ) );
     
     //Footer Ads (three)
@@ -179,7 +170,7 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'title'       => __( 'Advertisement 3', 'foundationbuddy' ),
         'priority'    => 10,
         'panel'       => 'footer',
-        'description' => __( 'Upload a favicon for your website', 'foundationbuddy' ),
+        'description' => __( 'Upload a image for the advertisement (three) section.', 'foundationbuddy' ),
     ) );
     
     //Footer Ads (four)
@@ -187,7 +178,7 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'title'       => __( 'Advertisement 4', 'foundationbuddy' ),
         'priority'    => 10,
         'panel'       => 'footer',
-        'description' => __( 'Upload a favicon for your website', 'foundationbuddy' ),
+        'description' => __( 'Upload a image for the advertisement (four) section.', 'foundationbuddy' ),
     ) );
     
     //Back to top button
@@ -222,14 +213,6 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'priority'    => 10,
         'panel'       => 'front_page',
         'description' => __( 'Choose whether you want a Pinterest style grid layout for the front page.', 'foundationbuddy' ),
-    ) );
-    
-    //Masonry style front page
-    $wp_customize->add_section( 'foundationbuddy_masonry_front_page_section' , array(
-        'title'       => __( 'Masonry grid', 'foundationbuddy' ),
-        'priority'    => 10,
-        'panel'       => 'front_page',
-        'description' => __( 'Choose whether you want Masonry layout activated for the front page or not.', 'foundationbuddy' ),
     ) );
     
     //Front page column number
@@ -283,12 +266,30 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'description' => __( 'Choose whether you want to show next and previous posts after the end of every post or not.', 'foundationbuddy' ),
     ) );
     
+    //Post tags after every posts
+    $wp_customize->add_section( 'foundationbuddy_post_tags_section' , array(
+        'title'       => __( 'Post tags', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'blog_page',
+        'description' => __( 'Choose whether you want to show post tags after the end of every post or not.', 'foundationbuddy' ),
+    ) );
+    
     //Author bio
     $wp_customize->add_section( 'foundationbuddy_author_bio_section' , array(
         'title'       => __( 'Author panel', 'foundationbuddy' ),
         'priority'    => 10,
         'panel'       => 'blog_page',
         'description' => __( 'Choose whether you want to show author bio after the end of every post or not.', 'foundationbuddy' ),
+    ) );
+    
+    /* Portfolio page options */
+    
+    //Portfolio category slug
+    $wp_customize->add_section( 'foundationbuddy_portfolio_category_slug_section' , array(
+        'title'       => __( 'Portfolio category slug', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'portfolio_page',
+        'description' => __( 'Write the Portfolio category slug.', 'foundationbuddy' ),
     ) );
     
     /* Woocommerce page options */
@@ -466,17 +467,6 @@ function foundationbuddy_controls( $controls ) {
         'priority'    => 10,
     );
 
-    //favicon control
-    $controls[] = array(
-        'type'        => 'image',
-        'setting'     => 'foundationbuddy_favicon',
-        'label'       => __( 'Upload your favicon.', 'foundationbuddy' ),
-        'description' => __( 'Choose the favicon that you want to use for your website.', 'foundationbuddy' ),
-        'section'     => 'favicon_section',
-        'default'     => '',
-        'priority'    => 10,
-    );
-
     //search bar control
     $controls[] = array(
         'type'        => 'radio',
@@ -521,17 +511,6 @@ function foundationbuddy_controls( $controls ) {
         'label'       => __( 'Custom header image', 'foundationbuddy' ),
         'description' => __( 'Choose the image for your custom header.', 'foundationbuddy' ),
         'section'     => 'foundationbuddy_custom_header_image_section',
-        'default'     => '',
-        'priority'    => 10,
-    );
-    
-    //Custom CSS
-    $controls[] = array(
-        'type'        => 'textarea',
-        'setting'     => 'foundationbuddy_header_custom_css',
-        'label'       => __( 'Custom CSS', 'foundationbuddy' ),
-        'description' => __( 'Write your Custom CSS.', 'foundationbuddy' ),
-        'section'     => 'foundationbuddy_header_custom_css_section',
         'default'     => '',
         'priority'    => 10,
     );
@@ -694,21 +673,6 @@ function foundationbuddy_controls( $controls ) {
         ),
     );
     
-    //Masonry style front page
-    $controls[] = array(
-        'type'        => 'radio',
-        'setting'     => 'foundationbuddy_masonry_front_page',
-        'label'       => __( 'Masonry layout', 'foundationbuddy' ),
-        'description' => __( 'Choose whether to use the Masonry style or not.', 'foundationbuddy' ),
-        'section'     => 'foundationbuddy_masonry_front_page_section',
-        'default'     => 'on',
-        'priority'    => 10,
-        'choices'     => array(
-            'on' => __( 'On', 'foundationbuddy' ),
-            'off' => __( 'Off', 'foundationbuddy' ),
-        ),
-    );
-    
     //Front page column number
     $controls[] = array(
         'type'        => 'radio',
@@ -773,8 +737,8 @@ function foundationbuddy_controls( $controls ) {
         'default'     => 'yes',
         'priority'    => 10,
         'choices'     => array(
-            'yes' => __( 'yes', 'foundationbuddy' ),
-            'no' => __( 'no', 'foundationbuddy' ),
+            'yes' => __( 'Yes', 'foundationbuddy' ),
+            'no' => __( 'No', 'foundationbuddy' ),
         ),
     );
     
@@ -804,8 +768,23 @@ function foundationbuddy_controls( $controls ) {
         'default'     => 'yes',
         'priority'    => 10,
         'choices'     => array(
-            'yes' => __( 'yes', 'foundationbuddy' ),
-            'no' => __( 'no', 'foundationbuddy' ),
+            'yes' => __( 'Yes', 'foundationbuddy' ),
+            'no' => __( 'No', 'foundationbuddy' ),
+        ),
+    );
+    
+    //Post tags after every posts
+    $controls[] = array(
+        'type'        => 'radio',
+        'setting'     => 'foundationbuddy_post_tags',
+        'label'       => __( 'Post tags after every posts', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show post tags after every posts or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_post_tags_section',
+        'default'     => 'yes',
+        'priority'    => 10,
+        'choices'     => array(
+            'yes' => __( 'Yes', 'foundationbuddy' ),
+            'no' => __( 'No', 'foundationbuddy' ),
         ),
     );
     
@@ -819,8 +798,8 @@ function foundationbuddy_controls( $controls ) {
         'default'     => 'yes',
         'priority'    => 10,
         'choices'     => array(
-            'yes' => __( 'yes', 'foundationbuddy' ),
-            'no' => __( 'no', 'foundationbuddy' ),
+            'yes' => __( 'Yes', 'foundationbuddy' ),
+            'no' => __( 'No', 'foundationbuddy' ),
         ),
     );
     
@@ -1227,6 +1206,17 @@ function foundationbuddy_controls( $controls ) {
             'units'    => 'px',
         ),
      );
+    
+    //portfolio page category slug
+    $controls[] = array(
+        'type'        => 'text',
+        'setting'     => 'foundationbuddy_portfolio_category_slug',
+        'label'       => __( 'Portfolio category slug', 'foundationbuddy' ),
+        'description' => __( 'Type in the category slug to be displayed in the portfolio page.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_portfolio_category_slug_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
     
     //Custom home page slider 1
     $controls[] = array(

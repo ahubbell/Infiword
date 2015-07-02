@@ -9,7 +9,7 @@
 <!-- /head -->
 
     <!-- page-content -->
-	<div class="small-12 large-8 columns" id="page-content" role="main">
+	<div class="small-12 large-8 columns" id="single-page-content" role="main">
         
         <!-- article -->
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
@@ -47,9 +47,9 @@
 	</div>
     <!-- /page-content -->
 
-<!-- sidebar -->
-<?php get_sidebar(); ?>
-<!-- /sidebar -->
+    <aside id="sidebar" class="small-12 large-4 columns">
+        <?php get_sidebar(); ?>
+    </aside><!-- /#sidebar -->
 
 <!-- footer -->
 <?php get_footer(); ?>

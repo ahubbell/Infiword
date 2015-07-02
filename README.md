@@ -21,4 +21,4 @@ See readme.txt for details.
 Demo
 =======
 
-Theme hasn't been updated in the WordPress directory yet. You can see the previous version here: https://wordpress.org/themes/infiword/
+Theme may not always be updated in the WordPress directory yet. You can see the previous version here: https://wordpress.org/themes/infiword/

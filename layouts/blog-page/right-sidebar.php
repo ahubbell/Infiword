@@ -30,28 +30,34 @@
                 <div class="separator"></div>
                 <div class="after-post-footer">
                     <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
-                    <p class="entry-tags"><?php the_tags(); ?></p>
                     <?php edit_post_link('Edit this Post'); ?>
                 </div>
             </article>
             <!-- /article -->
             
+            <!-- post tags -->
+            <?php if ( get_theme_mod('foundationbuddy_post_tags') == 'yes' || get_theme_mod('foundationbuddy_post_tags') == '' ) {  ?> 
+            <div class="separator"></div>
+            <?php get_template_part( 'templates/post', 'tags' ); ?>
+            <?php } ?>
+            <!-- /post tags -->
+            
             <!-- post navigation -->
-            <?php if ( get_theme_mod('foundationbuddy_post_navigation') == 'yes' ) {  ?> 
+            <?php if ( get_theme_mod('foundationbuddy_post_navigation' || get_theme_mod('foundationbuddy_post_navigation') == '' ) == 'yes' ) {  ?> 
             <div class="separator"></div>
             <?php get_template_part( 'templates/post', 'navigation' ); ?>
             <?php } ?>
             <!-- /post navigation -->
             
             <!-- author -->
-            <?php if ( get_theme_mod('foundationbuddy_author_bio') == 'yes' ) {  ?> 
+            <?php if ( get_theme_mod('foundationbuddy_author_bio' || get_theme_mod('foundationbuddy_author_bio') == '' ) == 'yes' ) {  ?> 
             <div class="separator"></div>
             <?php get_template_part( 'templates/author', 'bio' ); ?>
             <?php } ?>
             <!-- /author -->
             
             <!-- related posts -->
-            <?php if ( get_theme_mod('foundationbuddy_show_related_posts') == 'tags' || get_theme_mod('foundationbuddy_show_related_posts') == 'category' ) { ?>
+            <?php if ( get_theme_mod('foundationbuddy_show_related_posts') == 'tags' || get_theme_mod('foundationbuddy_show_related_posts') == 'category' || get_theme_mod('foundationbuddy_show_related_posts') == '' ) { ?>
             <div class="separator"></div>
             <?php get_template_part( 'templates/related', 'posts' ); ?>
             <?php } ?>

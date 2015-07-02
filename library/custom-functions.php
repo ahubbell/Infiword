@@ -203,6 +203,7 @@ add_action( 'woocommerce_sidebar', 'foundationbuddy_woocoomerce_sidebar', 10 );
 /* ------------------------------------------------------------------------- *
 /*  Related products count
 /* ------------------------------------------------------------------------- */
+
 if ( ! function_exists( 'foundationbuddy_related_products_limit' ) ) {
 
     function foundationbuddy_related_products_limit() {

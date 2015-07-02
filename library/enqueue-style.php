@@ -8,6 +8,9 @@ if( ! function_exists( 'foundationbuddy_enqueue_style' ) ) {
 	function foundationbuddy_enqueue_style()
 	{
         
+        // ie-only style sheet
+	    wp_register_style( 'foundationbuddy-ie-only', get_template_directory_uri() . '/css/ie.css', array(), '' );
+        
         // normalize stylesheet
 		wp_register_style( 'foundationbuddy-normalize-stylesheet', get_stylesheet_directory_uri() . '/css/normalize.css', array(), '' );
         
@@ -19,15 +22,32 @@ if( ! function_exists( 'foundationbuddy_enqueue_style' ) ) {
         
         // pace stylesheet
 		wp_register_style( 'foundationbuddy-pace-stylesheet', get_stylesheet_directory_uri() . '/css/pace.css', array(), '' );
+        
+        // flexslider stylesheet
+		wp_register_style( 'foundationbuddy-flexslider-stylesheet', get_stylesheet_directory_uri() . '/css/flexslider.css', array(), '' );
+        
+        // swipebox stylesheet
+		wp_register_style( 'foundationbuddy-swipebox-stylesheet', get_stylesheet_directory_uri() . '/css/swipebox.css', array(), '' );
+        
+        // admin stylesheet
+		wp_register_style( 'foundationbuddy-admin-stylesheet', get_stylesheet_directory_uri() . '/css/admin.css', array(), '' );
 
 		// Register the main style
 		wp_register_style( 'foundationbuddy-stylesheet', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
 		
+        wp_enqueue_style('foundationbuddy-ie-only');
         wp_enqueue_style( 'foundationbuddy-normalize-stylesheet' );
 		wp_enqueue_style( 'foundationbuddy-foundation-stylesheet' );
         wp_enqueue_style( 'foundationbuddy-animate-stylesheet' );
         wp_enqueue_style( 'foundationbuddy-pace-stylesheet' );
-		wp_enqueue_style( 'foundationbuddy-stylesheet' );		
+        wp_enqueue_style( 'foundationbuddy-flexslider-stylesheet' );
+        wp_enqueue_style( 'foundationbuddy-swipebox-stylesheet' );
+		wp_enqueue_style( 'foundationbuddy-stylesheet' );
+        
+        if ( is_user_logged_in() ) {
+            wp_enqueue_style( 'foundationbuddy-admin-stylesheet' );
+        }
+        
 	}
     
 }

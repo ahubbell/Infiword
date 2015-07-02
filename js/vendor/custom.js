@@ -36,21 +36,12 @@ jQuery(document).ready(function($){
 		(!window.requestAnimationFrame) ? setTimeout(moveNavigation, 300) : window.requestAnimationFrame(moveNavigation);
 	});
 
-	
-
 	//open search form
 	$('.cd-search-trigger').on('click', function(event){
 		event.preventDefault();
 		toggleSearch();
 		closeNav();
 	});
-
-	
-
-
-	
-
-
 
 	function toggleSearch(type) {
 		if(type=="close") {
@@ -96,3 +87,55 @@ jQuery(document).ready(function($){
 	}
 });
 
+
+/* Foundation init */
+
+(function($) {
+		$(document).foundation();
+	})(jQuery);
+
+/* WOW init */
+new WOW().init();
+
+/* Fitvids init */
+jQuery('.post').fitVids();
+
+/* Flexslider init */
+$(window).load(function() {
+  $('#slider').flexslider({
+    // change #slider to #carousel to use the carousel and uncomment all the lines
+    animation: "slide",
+    prevText: " ",
+    nextText: " ",
+    slideshow: true,
+	directionNav: true,
+	pauseOnHover: true,
+	slideshowSpeed: 7000,
+	animationSpeed: 600,
+	smoothHeight: true,
+    controlNav: true,
+    animationLoop: true,
+    //slideshow: false,
+    //itemWidth: 210,
+    //itemMargin: 5,
+    //asNavFor: '#slider'
+  });
+    
+  /*$('#slider').flexslider({
+    animation: "slide",
+    prevText: " ",
+    nextText: " ",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#carousel"
+  });*/
+});
+
+
+
+
+/* Swipebox init */
+;( function( $ ) {
+	$( '.swipebox' ).swipebox();
+} )( jQuery );

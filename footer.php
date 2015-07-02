@@ -8,6 +8,8 @@
 </div><!-- Container End -->
 <!-- /container -->
 
+<div class="separator"></div>
+
 <!-- footer-widget -->
 <div class="full-width footer-widget">
 	<div class="row">
@@ -87,24 +89,14 @@
                     echo wpautop( $foundationbuddy_footer_copyright_text_right ); 
                 ?>
             <?php } else { ?>
-                <?php _e('Theme by &nbsp;','foundationbuddy'); ?> <a href="http://infismash.com" rel="nofollow"> Infismash - Creativity that inspires you! </a>
-            <? } ?>
+                <?php _e('Powered by','foundationbuddy'); ?> WordPress. <?php _e('Theme by &nbsp;','foundationbuddy'); ?> <a href="http://infismash.com" rel="nofollow"> <?php _e('Infismash - Creativity that inspires you!','foundationbuddy'); ?> </a>
+            <?php } ?>
 		</div>
         
 	</div>
     <!-- /love-foundationbuddy -->
 </footer>
-
 <?php wp_footer(); ?>
 
-<script>
-	(function($) {
-		$(document).foundation();
-	})(jQuery);
-</script>
-<script>
-    new WOW().init();
-</script>
-	
 </body>
 </html>
