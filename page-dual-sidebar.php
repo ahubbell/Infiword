@@ -20,7 +20,6 @@ Template Name: Dual Sidebar
             <article <?php post_class('single-card') ?> id="post-<?php the_ID(); ?>">
                 <header>
                     <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
-                    <?php foundationbuddy_entry_meta(); ?>
                 </header>
                     <!-- featured image -->
                     <?php get_template_part( 'templates/featured', 'image' ); ?>
@@ -35,31 +34,6 @@ Template Name: Dual Sidebar
                 </div>
             </article>
             <!-- /article -->
-            
-            <!-- post navigation -->
-            <div class="separator"></div>
-            <?php get_template_part( 'templates/post', 'navigation' ); ?>
-            <!-- /post navigation -->
-            
-            
-            
-            
-            <!-- author -->
-            <div class="separator"></div>
-            <?php get_template_part( 'templates/author', 'bio' ); ?>
-            <!-- /author -->
-            
-            
-            <!-- related posts -->
-            <div class="separator"></div>
-            <?php get_template_part( 'templates/related', 'posts' ); ?>
-            <!-- /related posts -->
-            
-            
-            <!-- comments -->
-            <div class="separator"></div>
-            <?php comments_template(); ?>
-            <!-- /comments -->
         
             <?php endwhile; // End the loop ?>
         </div>

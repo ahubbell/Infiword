@@ -29,6 +29,7 @@
 
         <!-- <div class="fixed"> -->
             
+        <?php if ( has_nav_menu('primary') ): ?>
             <!-- primary-menu -->
             <nav class="top-bar primary-menu" data-topbar>
 
@@ -43,22 +44,17 @@
                 <section class="top-bar-section">
                     <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
 
-                    <?php if ( get_theme_mod( 'foundationbuddy_show_search_bar' ) != 'no' ) { ?>
+                    <?php if ( get_theme_mod( 'foundationbuddy_show_search_bar' ) == 'yes' || get_theme_mod( 'foundationbuddy_show_search_bar' ) == '') { ?>
 
                     <!-- search bar -->
                     <ul class="right" >
-                        <li class="has-dropdown">
-                            <a href="#"><i class="fa fa-search"></i></a>
-                            <ul class="dropdown">
-                                <li>
-                                    <div class="search-expand">
-                                        <div class="search-expand-inner">
-                                            <?php get_search_form(); ?>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                    	<li class="has-form">
+					  		<div class="row collapse">
+					    		<div class="large-12 small-12 columns">
+					      			<?php get_search_form(); ?>
+					    		</div>
+							 </div>
+						</li>
                     </ul> 
                     <!-- /search bar -->
 
@@ -69,6 +65,7 @@
 
             </nav>
             <!-- primary-menu -->
+        <?php endif; ?>
             
         <!-- </div> -->
 
@@ -93,29 +90,31 @@
             </div>
         </div>
 
-        <!-- secondary-menu -->
-        <nav class="top-bar secondary-menu" data-topbar role="navigation">
+        <?php if ( has_nav_menu('additional') ): ?>
+            <!-- secondary-menu -->
+            <nav class="top-bar secondary-menu" data-topbar role="navigation">
 
-            <!-- title-area -->
-            <ul class="title-area">
-                <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
-            </ul>
-            <!-- /title-area -->
-        
-            <!-- top-bar-section -->
-            <section class="top-bar-section secondary-menu">
-                <?php wp_nav_menu( array( 'theme_location' => 'additional', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
-                
-                <?php if ( get_theme_mod( 'foundationbuddy_social_buttons' ) != 'no' ) {
-                    get_template_part( 'templates/social', 'buttons' );
-                 } ?>
-                
-            </section>
-            <!-- /top-bar-section -->
+                <!-- title-area -->
+                <ul class="title-area">
+                    <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                    <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
+                </ul>
+                <!-- /title-area -->
 
-        </nav>
-        <!-- /secondary-menu -->
+                <!-- top-bar-section -->
+                <section class="top-bar-section secondary-menu">
+                    <?php wp_nav_menu( array( 'theme_location' => 'additional', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
+
+                    <?php if ( get_theme_mod( 'foundationbuddy_social_buttons' ) == 'yes' || get_theme_mod( 'foundationbuddy_social_buttons' ) == '' ) {
+                        get_template_part( 'templates/social', 'buttons' );
+                     } ?>
+
+                </section>
+                <!-- /top-bar-section -->
+
+            </nav>
+            <!-- /secondary-menu -->
+        <?php endif; ?>
         
     </header>
     <!-- header -->

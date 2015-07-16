@@ -29,44 +29,49 @@
 </div>
 <!-- /footer-widget -->
 
-<!-- footer-menu -->
-<nav class="top-bar footer-menu" data-topbar>
-	    
-    <!-- title-area -->
-    <ul class="title-area">
-        <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
-    </ul>
-    <!-- /title-area -->
-	    
-    <!-- top-bar-section -->
-    <section class="top-bar-section footer-menu">
-	    <?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
-    </section>
-    <!-- /top-bar-section -->
-        
-</nav>
-<!-- /footer-menu -->
+<?php if ( has_nav_menu('footer') ): ?>
+    <!-- footer-menu -->
+    <nav class="top-bar footer-menu" data-topbar>
 
-<!-- footer-links -->
-<footer class="full-width footer-links" role="contentinfo">
-    
-    <!-- back to top -->
-    <?php if ( get_theme_mod( 'foundationbuddy_footer_back_to_top') == 'yes' ) { ?>
+        <!-- title-area -->
+        <ul class="title-area">
+            <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
+        </ul>
+        <!-- /title-area -->
+
+        <!-- top-bar-section -->
+        <section class="top-bar-section footer-menu">
+            <?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
+        </section>
+        <!-- /top-bar-section -->
+
+    </nav>
+    <!-- /footer-menu -->
+<?php endif; ?>
+
+<!-- back to top -->
+    <?php if ( get_theme_mod( 'foundationbuddy_footer_back_to_top') == 'yes' || get_theme_mod( 'foundationbuddy_footer_back_to_top') == '') { ?>
         <a href="#0" class="back-to-top">Top</a>
     <?php } ?>
     <!-- /back to top -->
-    
-    <!-- footer-advertisement -->
+
 	<?php
         if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) || get_theme_mod('foundationbuddy_footer_advertisement_two' ) || get_theme_mod('foundationbuddy_footer_advertisement_three' ) || get_theme_mod('foundationbuddy_footer_advertisement_four' ) ) {
-            get_template_part( 'templates/footer', 'advertisement' );
+    ?>
+            <!-- footer-advertisement -->
+            <footer class="full-width footer-links" role="contentinfo">
+            
+                <?php
+                    get_template_part( 'templates/footer', 'advertisement' );
+                ?>
+        
+            </footer>
+            <!-- /footer-advertisement -->
+
+    <?php
         }
     ?>
-    <!-- /footer-advertisement -->
-    
-</footer>
-<!-- /footer-links -->
 
 <footer class="full-width copyright" role="contentinfo">
     <!-- love-foundationbuddy -->

@@ -43,14 +43,14 @@
             <!-- /post tags -->
             
             <!-- post navigation -->
-            <?php if ( get_theme_mod('foundationbuddy_post_navigation' || get_theme_mod('foundationbuddy_post_navigation') == '' ) == 'yes' ) {  ?> 
+            <?php if ( get_theme_mod('foundationbuddy_post_navigation') == 'yes' || get_theme_mod('foundationbuddy_post_navigation') == '' ) {  ?> 
             <div class="separator"></div>
             <?php get_template_part( 'templates/post', 'navigation' ); ?>
             <?php } ?>
             <!-- /post navigation -->
             
             <!-- author -->
-            <?php if ( get_theme_mod('foundationbuddy_author_bio' || get_theme_mod('foundationbuddy_author_bio') == '' ) == 'yes' ) {  ?> 
+            <?php if ( get_theme_mod('foundationbuddy_author_bio') == 'yes' || get_theme_mod('foundationbuddy_author_bio') == '' ) {  ?> 
             <div class="separator"></div>
             <?php get_template_part( 'templates/author', 'bio' ); ?>
             <?php } ?>

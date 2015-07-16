@@ -1,11 +1,38 @@
-﻿Theme Name:         Infiword
+Theme Name:         Infiword
 Theme URI:          http://infismash.com/demos/wordpress/infiword
-Current Version:    2.0.4
+Current Version:    2.1.0
 Author:             Nirmalya Ghosh
 Author URI:         http://infismash.com/
 Copyright:          (c) 2015 Nirmalya Ghosh
 
-In Production - 2.0.5
+July 17 2015 - 2.1.0
+===========================================================
+- Gallery fix
+- Minor CSS changes
+- Search-form edit
+
+July 6 2015 - 2.0.9
+===========================================================
+- Minor bug fixes
+
+July 4 2015 - 2.0.8
+===========================================================
+- Minor bug fixes
+
+July 4 2015 - 2.0.7
+===========================================================
+- Removed masonry script
+- Removed imagesLoaded script
+- Minor CSS changes
+
+July 4 2015 - 2.0.6
+===========================================================
+- Corrected the masonry conflict
+- JavaScript cleanup
+- Fixed the blank menu space which showed for no active menus
+- Fixed the advertisement space which showed for no active advertisements
+
+July 2 2015 - 2.0.5
 ===========================================================
 - Masonry implementation changed from HTML to Javascript
 - Moved init Javascript codes from footer to custom.js
@@ -13,16 +40,9 @@ In Production - 2.0.5
 - Added Fitvidsjs
 - Moved jqueryjs from header to footer
 - Added imageLoadedjs
-        - Customize the search bar
-        - Update the custom homepage
-        - Remove no-masonry option for the index page
-        - Customize the post-formats page (for gallery post format)
-        - Add documentation about the theme
-        - Edit the theme url and description
-        - Update the screenshot
-        - Add more color options
-        - Change default colors
-        - CSS cleanup
+- Removed no-masonry option for the index page
+- Customize the post-formats page (for gallery post format)
+- Change default colors
 
 June 25 2015 - 2.0.4
 ===========================================================

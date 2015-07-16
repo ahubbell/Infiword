@@ -54,4 +54,16 @@ if( ! function_exists( 'foundationbuddy_enqueue_style' ) ) {
 
 add_action( 'wp_enqueue_scripts', 'foundationbuddy_enqueue_style' );
 
+// adding the conditional wrapper around ie stylesheet
+// source: http://code.garyjones.co.uk/ie-conditional-style-sheets-wordpress/
+if( ! function_exists( 'foundationbuddy_ie_conditional ' ) ) {
+    
+	function foundationbuddy_ie_conditional( $tag, $handle ) {
+		if ( 'foundationbuddy-ie-only' == $handle )
+			$tag = '<!--[if lt IE 9]>' . "\n" . $tag . '<![endif]-->' . "\n";
+		return $tag;
+	}
+    
+}
+
 ?>

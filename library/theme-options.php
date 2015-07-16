@@ -1077,7 +1077,7 @@ function foundationbuddy_controls( $controls ) {
         'priority' => 20,
         'choices'  => Kirki_Fonts::get_font_choices(),
         'output' => array(
-            'element'  => '.entry-content p',
+            'element'  => '.entry-content p, .entry-content ul, .entry-content dl, .entry-content ol, .entry-content a',
             'property' => 'font-family',
         ),
      );
@@ -1093,7 +1093,7 @@ function foundationbuddy_controls( $controls ) {
         'priority' => 22,
         'choices'  => Kirki_Fonts::get_google_font_subsets(),
         'output' => array(
-            'element'  => '.entry-content p',
+            'element'  => '.entry-content p, .entry-content ul, .entry-content dl, .entry-content ol, .entry-content a',
             'property' => 'font-subset',
         ),
     );
@@ -1112,7 +1112,7 @@ function foundationbuddy_controls( $controls ) {
             'step' => 100,
         ),
         'output' => array(
-            'element'  => '.entry-content p',
+            'element'  => '.entry-content p, .entry-content ul, .entry-content dl, .entry-content ol, .entry-content a',
             'property' => 'font-weight',
         ),
      );
@@ -1131,7 +1131,7 @@ function foundationbuddy_controls( $controls ) {
             'step' => 1,
         ),
         'output' => array(
-            'element'  => '.entry-content p',
+            'element'  => '.entry-content p, .entry-content ul, .entry-content dl, .entry-content ol, .entry-content a',
             'property' => 'font-size',
             'units'    => 'px',
         ),

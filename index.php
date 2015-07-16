@@ -16,12 +16,7 @@
 <?php if ( get_theme_mod('foundationbuddy_front_page_layout_pinterest') == 'off' ) { ?>
     <?php get_template_part( 'templates/blog', 'front-page' ); ?>
 <?php } else { ?>
-    <?php if ( get_theme_mod('foundationbuddy_masonry_front_page') == 'off' ) { ?> 
-    <?php get_template_part( 'templates/no', 'masonry-front-page' ); ?>
-        </div>
-    <?php } else { ?>
     <?php get_template_part( 'templates/masonry', 'front-page' ); ?>
-    <?php } ?>
 <?php } ?>
 		
 <?php get_footer(); ?>

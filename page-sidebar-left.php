@@ -18,7 +18,6 @@ Template Name: Left Sidebar
 		<article <?php post_class('page-card') ?> id="post-<?php the_ID(); ?>">
 			<header>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
-				<?php foundationbuddy_entry_meta(); ?>
 			</header>
 			<div class="entry-content">
 				<?php the_content(); ?>
@@ -27,11 +26,9 @@ Template Name: Left Sidebar
 				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
 			</footer>
 		</article>
-	<div class="separator"></div>
-
-		<?php comments_template(); ?>
-	<?php endwhile; // End the loop ?>
-
-	</div>
+	<!-- /article -->
+        
+            <?php endwhile; // End the loop ?>
+        </div>
 		
 <?php get_footer(); ?>

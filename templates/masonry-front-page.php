@@ -52,9 +52,8 @@
 </div>
 <!-- /content -->
         
-<?php if( foundationbuddy_get_total_published_post_count() != 1 && foundationbuddy_get_total_published_post_count() != 0 ) { ?>
      <script type="text/javascript">
-        $( document ).ready(function() {
+        jQuery(function($) {
                                     
             imagesLoaded( document.querySelector('#container'), function( instance ) {
                                               
@@ -66,4 +65,3 @@
             
         });
     </script> 
-<?php } ?>

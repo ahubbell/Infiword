@@ -31,7 +31,7 @@
 </div>
 
     <script type="text/javascript">
-        $( document ).ready(function() {
+        jQuery(function($) {
                                     
             imagesLoaded( document.querySelector('#portfolio-container'), function( instance ) {
                                               

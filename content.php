@@ -11,7 +11,7 @@
 	<header>
         
         <!-- index-post-thumbnail -->
-        <figure id="index-post-thumbnail"><a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) {the_post_thumbnail('large'); } ?></a></figure>
+        <figure class="index-post-thumbnail"><a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) {the_post_thumbnail('large'); } ?></a></figure>
         <!-- /index-post-thumbnail -->
         
         <!-- post-entry-meta -->
