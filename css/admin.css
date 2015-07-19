@@ -12,7 +12,9 @@
       top: -46px;
     }
 }
-
+.foundation-sticky {
+	top: 32px;
+}
 /*@media screen and (max-width: 783) {
     nav.top-bar.primary-menu {
       margin-top: 46px;

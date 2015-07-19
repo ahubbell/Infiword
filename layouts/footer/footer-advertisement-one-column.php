@@ -13,7 +13,7 @@
     $foundationbuddy_footer_advertisement_one_link = '';
 ?>
 
-<div class="large-12 columns">
+<div class="large-12 columns footer-ads-container">
         <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ) {
                 if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' ) ) {

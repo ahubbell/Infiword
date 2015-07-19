@@ -15,7 +15,7 @@
     $foundationbuddy_footer_advertisement_four_link = '';
 ?>
 
-<div class="large-3 columns">
+<div class="large-3 columns footer-ads-container">
         <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ) {
                 if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' ) ) {
@@ -27,7 +27,7 @@
         ?>
 </div>
 
-<div class="large-3 columns">
+<div class="large-3 columns footer-ads-container">
         <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_two' ) ) {
                 if ( get_theme_mod( 'foundationbuddy_footer_advertisement_two_link' ) ) {
@@ -39,7 +39,7 @@
         ?>
 </div>
 
-<div class="large-3 columns">
+<div class="large-3 columns footer-ads-container">
         <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_three' ) ) {
                 if ( get_theme_mod( 'foundationbuddy_footer_advertisement_three_link' ) ) {
@@ -51,7 +51,7 @@
         ?>
 </div>
 
-<div class="large-3 columns">
+<div class="large-3 columns footer-ads-container">
         <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_four' ) ) {
                 if ( get_theme_mod( 'foundationbuddy_footer_advertisement_four_link' ) ) {

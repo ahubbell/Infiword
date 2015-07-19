@@ -30,41 +30,45 @@
         <!-- <div class="fixed"> -->
             
         <?php if ( has_nav_menu('primary') ): ?>
-            <!-- primary-menu -->
-            <nav class="top-bar primary-menu" data-topbar>
 
-                <!-- title-area -->
-                <ul class="title-area">
-                    <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                    <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
-                </ul>
-                <!-- /title-area -->
+            <div class="foundation-sticky">
+                <!-- primary-menu -->
+                <nav class="top-bar primary-menu" data-topbar data-options="sticky_on: large;scrolltop: false;">
 
-                <!-- top-bar-section -->
-                <section class="top-bar-section">
-                    <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
+                    <!-- title-area -->
+                    <ul class="title-area">
+                        <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                        <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
+                    </ul>
+                    <!-- /title-area -->
 
-                    <?php if ( get_theme_mod( 'foundationbuddy_show_search_bar' ) == 'yes' || get_theme_mod( 'foundationbuddy_show_search_bar' ) == '') { ?>
+                    <!-- top-bar-section -->
+                    <section class="top-bar-section">
+                        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
 
-                    <!-- search bar -->
-                    <ul class="right" >
-                    	<li class="has-form">
-					  		<div class="row collapse">
-					    		<div class="large-12 small-12 columns">
-					      			<?php get_search_form(); ?>
-					    		</div>
-							 </div>
-						</li>
-                    </ul> 
-                    <!-- /search bar -->
+                        <?php if ( get_theme_mod( 'foundationbuddy_show_search_bar' ) == 'yes' || get_theme_mod( 'foundationbuddy_show_search_bar' ) == '') { ?>
 
-                    <?php } ?>
+                        <!-- search bar -->
+                        <ul class="right" >
+                        	<li class="has-form">
+    					  		<div class="row collapse">
+    					    		<div class="large-12 small-12 columns">
+    					      			<?php get_search_form(); ?>
+    					    		</div>
+    							 </div>
+    						</li>
+                        </ul> 
+                        <!-- /search bar -->
 
-                </section>
-                <!-- /top-bar-section -->
+                        <?php } ?>
 
-            </nav>
-            <!-- primary-menu -->
+                    </section>
+                    <!-- /top-bar-section -->
+
+                </nav>
+                <!-- primary-menu -->
+            </div>
+
         <?php endif; ?>
             
         <!-- </div> -->
