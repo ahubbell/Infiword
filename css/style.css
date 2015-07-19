@@ -1561,3 +1561,6 @@ img:hover.attachment-shop_thumbnail { opacity: 0.8 }
     background: transparent;
 }
 
+.top-bar-section .has-dropdown > a:after {
+  border-color: rgba(29, 27, 27, 0.4) transparent transparent transparent;
+}
