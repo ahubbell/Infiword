@@ -5,6 +5,15 @@
  * only this page is called. This page is called from 'footer.php'.
  /* ------------------------------------------------------------------------- */
 ?>
+<?php
+/* ------------------------------------------------------------------------- *
+ * Setting up default variables
+ /* ------------------------------------------------------------------------- */
+    $foundationbuddy_footer_advertisement_one_link = '';
+    $foundationbuddy_footer_advertisement_two_link = '';
+    $foundationbuddy_footer_advertisement_three_link = '';
+    $foundationbuddy_footer_advertisement_four_link = '';
+?>
 
 <div class="large-3 columns">
         <?php

@@ -186,7 +186,6 @@ pre {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    border: 1px solid #e0e0e0;
 }
 /* ------------------------------------------------------------------------- *
  * Author
@@ -199,7 +198,6 @@ span.byline.author a { color: #008cba }
     background-color: #fbfbfb;
     border: none;
     padding: 2.125rem;
-    border: 1px solid #e0e0e0;
 }
 .entry-author .avatar {
     margin-right: 2.5rem;
@@ -284,7 +282,6 @@ body > header.contain-to-grid {
 #page-content.page { margin-top: 0px }
 article {
     background: #fff;
-    border: 1px solid #e0e0e0;
 }
 .post-format-image,
 .featured-image-post {
@@ -299,7 +296,6 @@ article header.comment-author { text-align: left }
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    border: 1px solid #e0e0e0;
 }
 .single-card {
     border-radius: 3px;
@@ -318,7 +314,6 @@ article.index-card header img {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     margin-top: 20px;
-    border: 1px solid #e0e0e0;
 }
 .not-found { margin-top: 20px }
 h1.entry-title { text-transform: uppercase }
@@ -345,7 +340,6 @@ h1.entry-title { text-transform: uppercase }
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    border: 1px solid #e0e0e0;
 }
 .portfolio-item-screenshot img {
     opacity: 1;
@@ -495,7 +489,6 @@ h4.muted {
     -webkit-border-radius: 3px;
     text-transform: uppercase;
     font-weight: 600;
-    border: 1px solid #e0e0e0;
 }
 .wp-caption { }
 .wp-caption-text { }
@@ -642,7 +635,6 @@ section#respond {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    border: 1px solid #e0e0e0;
     padding: 2.125rem;
 }
 li.comment { border-bottom: 1px dotted #ddd }
@@ -796,7 +788,6 @@ footer.full-width.copyright {
 }
 .full-width.footer-widget {
    background-color: rgba(255, 255, 255, 0.5);
-   border: 1px solid #e0e0e0;
 }
 .copyright-right,
 .copyright-right a,
@@ -1159,7 +1150,6 @@ aside#left-sidebar {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    border: 1px solid #e0e0e0;
 }
 .sidebar-widget .recentpoststitle {
     color: #008CBA;
@@ -1222,7 +1212,6 @@ a.recentpostswidgetsidebar {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    border: 1px solid #e0e0e0;
 }
 #left-sidebar .panel a,
 #left-dual-sidebar .panel a,
@@ -1571,3 +1560,4 @@ img:hover.attachment-shop_thumbnail { opacity: 0.8 }
 .top-bar-section .has-form {
     background: transparent;
 }
+

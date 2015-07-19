@@ -6,6 +6,14 @@
  /* ------------------------------------------------------------------------- */
 ?>
 
+<?php
+/* ------------------------------------------------------------------------- *
+ * Setting up default variables
+ /* ------------------------------------------------------------------------- */
+    $foundationbuddy_footer_advertisement_one_link = '';
+    $foundationbuddy_footer_advertisement_two_link = '';
+?>
+
 <div class="large-6 columns">
         <?php
             if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ) {
