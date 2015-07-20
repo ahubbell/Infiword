@@ -138,6 +138,14 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'panel'       => 'header',
         'description' => __( 'Upload your custom header image. This header image will be shown on all the pages of the website.', 'foundationbuddy' ),
     ) );
+
+    // Header background
+    $wp_customize->add_section( 'foundationbuddy_custom_header_background_section' , array(
+        'title'       => __( 'Header background', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'header',
+        'description' => __( 'Customize the background of your header.', 'foundationbuddy' ),
+    ) );
     
     /* Footer */
     
@@ -206,6 +214,14 @@ function foundationbuddy_panels_sections( $wp_customize ) {
     ) );
     
     /* Front page options */
+
+    //Slider for front page
+    $wp_customize->add_section( 'foundationbuddy_front_page_slider_section' , array(
+        'title'       => __( 'Slider for front page', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'front_page',
+        'description' => __( 'Choose whether you want a slider for the front page.', 'foundationbuddy' ),
+    ) );
           
     //Pinterest style front page
     $wp_customize->add_section( 'foundationbuddy_front_page_layout_pinterest_section' , array(
@@ -424,6 +440,62 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'description' => __( 'Show a slider on the front page. This slider will be shown above all the post excerpts but below the navigation.', 'foundationbuddy' ),
     ) );
 
+    //Custom Home page carousel 1
+    $wp_customize->add_section( 'foundationbuddy_custom_home_page_carousel_1_section' , array(
+        'title'       => __( 'Carousel 1', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_home_page',
+        'description' => __( 'Show a carousel on the front page. This carousel will be shown above all the post excerpts but below the navigation.', 'foundationbuddy' ),
+    ) );
+
+    //Custom Home page header 1 text
+    $wp_customize->add_section( 'foundationbuddy_custom_homepage_header_section-1_section' , array(
+        'title'       => __( 'Section 1', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_home_page',
+        'description' => __( 'Header text for section 1.', 'foundationbuddy' ),
+    ) );
+
+    //Custom Home page header 2 text
+    $wp_customize->add_section( 'foundationbuddy_custom_homepage_header_section-2_section' , array(
+        'title'       => __( 'Section 2', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_home_page',
+        'description' => __( 'Header text for section 2.', 'foundationbuddy' ),
+    ) );
+
+    //Custom Home page header 3 text
+    $wp_customize->add_section( 'foundationbuddy_custom_homepage_header_section-3_section' , array(
+        'title'       => __( 'Section 3', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_home_page',
+        'description' => __( 'Header text for section 3.', 'foundationbuddy' ),
+    ) );
+
+    //Custom Home page header 4 text
+    $wp_customize->add_section( 'foundationbuddy_custom_homepage_header_section-4_section' , array(
+        'title'       => __( 'Section 4', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_home_page',
+        'description' => __( 'Header text for section 4.', 'foundationbuddy' ),
+    ) );
+
+    //Custom Home page header 5 text
+    $wp_customize->add_section( 'foundationbuddy_custom_homepage_header_section-5_section' , array(
+        'title'       => __( 'Section 5', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_home_page',
+        'description' => __( 'Header text for section 5.', 'foundationbuddy' ),
+    ) );
+
+    //Custom Home page header 6 text
+    $wp_customize->add_section( 'foundationbuddy_custom_homepage_header_section-6_section' , array(
+        'title'       => __( 'Section 6', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_home_page',
+        'description' => __( 'Header text for section 6.', 'foundationbuddy' ),
+    ) );
+
 }
 
 add_action( 'customize_register', 'foundationbuddy_panels_sections' );
@@ -507,18 +579,42 @@ function foundationbuddy_controls( $controls ) {
     // Custom Header image
     $controls[] = array(
         'type'        => 'image',
-        'settings'     => 'foundationbuddy_custom_header_image',
+        'settings'    => 'foundationbuddy_custom_header_image',
         'label'       => __( 'Custom header image', 'foundationbuddy' ),
         'description' => __( 'Choose the image for your custom header.', 'foundationbuddy' ),
         'section'     => 'foundationbuddy_custom_header_image_section',
         'default'     => '',
         'priority'    => 10,
     );
+
+    /* ------------------------------------------------------------------------- *
+     *  TODO: Issue reported in Kirki
+    /* ------------------------------------------------------------------------- */
+
+    // Custom Header background
+    /*$controls[] = array(
+        'type'        => 'background',
+        'settings'    => 'foundationbuddy_custom_header_background',
+        'label'       => __( 'Custom header background', 'foundationbuddy' ),
+        'description' => __( 'Customize your header.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_header_background_section',
+        'default'     => array(
+            'color'    => 'rgba(25,170,141,0.7)',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => 'body > header.contain-to-grid',
+    );*/
     
     //footer advertisement count control
     $controls[] = array(
         'type'        => 'radio',
-        'settings'     => 'foundationbuddy_footer_advertisement_count',
+        'settings'    => 'foundationbuddy_footer_advertisement_count',
         'label'       => __( 'Footer ads count', 'foundationbuddy' ),
         'description' => __( 'Choose the number of ads to be shown on the footer.', 'foundationbuddy' ),
         'section'     => 'foundationbuddy_footer_advertisement_count_section',
@@ -658,6 +754,131 @@ function foundationbuddy_controls( $controls ) {
         'priority'    => 10,
     );
     
+    //front page slider
+    $controls[] = array(
+        'type'        => 'radio',
+        'settings'     => 'foundationbuddy_front_page_slider',
+        'label'       => __( 'Front page slider', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to use the front page slider or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => 'off',
+        'priority'    => 10,
+        'choices'     => array(
+            'on' => __( 'On', 'foundationbuddy' ),
+            'off' => __( 'Off', 'foundationbuddy' ),
+        ),
+    );
+
+    // front page slider 1 image 1
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_1',
+        'label'       => __( 'Front page slider 1 image 1', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the first slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //front page slider 1 image 1 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_1_link',
+        'label'       => __( 'Front page slider 1 image 1 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the first slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //front page slider 1 image 2
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_2',
+        'label'       => __( 'Front page slider 1 image 2', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the second slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //front page slider 1 image 2 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_2_link',
+        'label'       => __( 'Front page slider 1 image 2 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the second slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    // front page slider 1 image 3
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_3',
+        'label'       => __( 'Front page slider 1 image 3', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the third slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //front page slider 1 image 3 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_3_link',
+        'label'       => __( 'Front page slider 1 image 3 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the third slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    // front page slider 1 image 4
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_4',
+        'label'       => __( 'Front page slider 1 image 4', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the fourth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //front page slider 1 image 4 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_4_link',
+        'label'       => __( 'Front page slider 1 image 4 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the fourth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    // Custom home page slider 1 image 5
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_5',
+        'label'       => __( 'Front page slider 1 image 5', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the fifth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //front page slider 1 image 5 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_front_page_slider_1_image_5_link',
+        'label'       => __( 'Front page slider 1 image 5 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the fifth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_front_page_slider_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+
     //pinterest style front page control
     $controls[] = array(
         'type'        => 'radio',
@@ -1217,6 +1438,87 @@ function foundationbuddy_controls( $controls ) {
         'default'     => '',
         'priority'    => 10,
     );
+
+    //Custom home page section 1 header text
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_homepage_header_section-1',
+        'label'       => __( 'Custom home page section 1 header(string)', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show the custom home page section 1 header text or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_homepage_header_section-1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+
+    //Custom home page section 2 header text
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_homepage_header_section-2',
+        'label'       => __( 'Custom home page section 2 header(string)', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show the custom home page section 2 header text or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_homepage_header_section-2_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+
+    //Custom home page section 3 header text
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_homepage_header_section-3',
+        'label'       => __( 'Custom home page section 3 header(string)', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show the custom home page section 3 header text or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_homepage_header_section-3_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+
+    //Custom home page section 4 header text
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_homepage_header_section-4',
+        'label'       => __( 'Custom home page section 4 header(string)', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show the custom home page section 4 header text or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_homepage_header_section-4_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+
+    //Custom home page section 5 header text
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_homepage_header_section-5',
+        'label'       => __( 'Custom home page section 5 header(string)', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show the custom home page section 5 header text or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_homepage_header_section-5_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+
+    /* ------------------------------------------------------------------------- *
+     *  TODO: Issue reported in Kirki
+    /* ------------------------------------------------------------------------- */
+    
+    //Custom home page section 5 editor
+    /*$controls[] = array(
+        'type'        => 'editor',
+        'settings'     => 'foundationbuddy_custom_homepage_editor_section-5',
+        'label'       => __( 'Custom home page section 6 editor text', 'foundationbuddy' ),
+        'description' => __( 'Customize the section 5 with you editor text.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_homepage_header_section-5_section',
+        'default'     => '',
+        'priority'    => 10,
+    );*/
+
+    //Custom home page section 6 header text
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_homepage_header_section-6',
+        'label'       => __( 'Custom home page section 6 header(string)', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show the custom home page section 6 header text or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_homepage_header_section-6_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
     
     //Custom home page slider 1
     $controls[] = array(
@@ -1464,6 +1766,131 @@ function foundationbuddy_controls( $controls ) {
         'label'       => __( 'This is the label', 'foundationbuddy' ),
         'description' => __( 'Choose the link of the image to be shown on the fifth slide.', 'foundationbuddy' ),
         'section'     => 'foundationbuddy_custom_home_page_slider_2_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+
+    //Custom home page carousel 1
+    $controls[] = array(
+        'type'        => 'radio',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1',
+        'label'       => __( 'Custom home page carousel 1', 'foundationbuddy' ),
+        'description' => __( 'Choose whether to show the custom home page carousel 1 or not.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => 'yes',
+        'priority'    => 10,
+        'choices'     => array(
+            'yes' => __( 'Yes', 'foundationbuddy' ),
+            'no' => __( 'No', 'foundationbuddy' ),
+        ),
+    );
+    
+    // Custom home page carousel 1 image 1
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_1',
+        'label'       => __( 'Custom home page carousel 1 image 1', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the first slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //Custom home page carousel 1 image 1 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_1_link',
+        'label'       => __( 'Custom home page carousel 1 image 1 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the first slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    // Custom home page carousel 1 image 2
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_2',
+        'label'       => __( 'Custom home page carousel 1 image 2', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the second slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //Custom home page carousel 1 image 2 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_2_link',
+        'label'       => __( 'Custom home page carousel 1 image 2 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the second slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    // Custom home page carousel 1 image 3
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_3',
+        'label'       => __( 'Custom home page carousel 1 image 3', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the third slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //Custom home page carousel 1 image 3 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_3_link',
+        'label'       => __( 'Custom home page carousel 1 image 3 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the third slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    // Custom home page carousel 1 image 4
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_4',
+        'label'       => __( 'Custom home page carousel 1 image 4', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the fourth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //Custom home page carousel 1 image 4 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_4_link',
+        'label'       => __( 'Custom home page carousel 1 image 4 link', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the fourth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    // Custom home page carousel 1 image 5
+    $controls[] = array(
+        'type'        => 'image',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_5',
+        'label'       => __( 'Custom home page carousel 1 image 5', 'foundationbuddy' ),
+        'description' => __( 'Choose the image to be shown on the fifth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
+        'default'     => '',
+        'priority'    => 10,
+    );
+    
+    //Custom home page carousel 1 image 5 link
+    $controls[] = array(
+        'type'        => 'text',
+        'settings'     => 'foundationbuddy_custom_home_page_carousel_1_image_5_link',
+        'label'       => __( 'This is the label', 'foundationbuddy' ),
+        'description' => __( 'Choose the link of the image to be shown on the fifth slide.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_custom_home_page_carousel_1_section',
         'default'     => '',
         'priority'    => 10,
     );

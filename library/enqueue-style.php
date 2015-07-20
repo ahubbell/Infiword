@@ -32,6 +32,9 @@ if( ! function_exists( 'foundationbuddy_enqueue_style' ) ) {
         // admin stylesheet
 		wp_register_style( 'foundationbuddy-admin-stylesheet', get_stylesheet_directory_uri() . '/css/admin.css', array(), '' );
 
+		// customizer stylesheet
+		wp_register_style( 'foundationbuddy-customizer-stylesheet', get_stylesheet_directory_uri() . '/css/customizer.css', array(), '' );
+
 		// Register the main style
 		wp_register_style( 'foundationbuddy-stylesheet', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
 		
@@ -46,6 +49,10 @@ if( ! function_exists( 'foundationbuddy_enqueue_style' ) ) {
         
         if ( is_user_logged_in() ) {
             wp_enqueue_style( 'foundationbuddy-admin-stylesheet' );
+        }
+
+        if ( is_customize_preview() ) {
+            wp_enqueue_style( 'foundationbuddy-customizer-stylesheet' );
         }
         
 	}

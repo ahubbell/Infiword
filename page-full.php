@@ -7,7 +7,7 @@ Template Name: Full Width
 <?php get_header(); ?>
 
 <!-- Row for main content area -->
-	<div class="small-12 large-12 columns" id="page-content" role="main">
+	<div class="small-12 large-12 columns" id="single-page-content" role="main">
 	
 	<?php /* Start loop */ ?>
 	<?php while (have_posts()) : the_post(); ?>
@@ -28,5 +28,13 @@ Template Name: Full Width
             <?php endwhile; // End the loop ?>
         </div>
 	</div>
+
+	<style type="text/css">
+		#single-page-content {
+	        max-width: 62.5rem !important;
+	        margin: 0 auto;
+	        float: inherit;
+	    }
+	</style>
 		
 <?php get_footer(); ?>

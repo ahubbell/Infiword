@@ -1,6 +1,6 @@
-<div class="small-12 large-12 columns custom-home-page-slider" id="slider-content"> 
+<div class="small-12 large-12 columns custom-home-page-slider flexslider" id="slider-2">
     <?php
-        echo '<ul data-orbit>';
+        echo '<ul class="slides">';
         if ( get_theme_mod('foundationbuddy_custom_home_page_slider_2_image_1') ) {
             $foundationbuddy_custom_home_page_slider_2_image_1 = '<img src="'.get_theme_mod('foundationbuddy_custom_home_page_slider_2_image_1').'">';
             if ( get_theme_mod( 'foundationbuddy_custom_home_page_slider_2_image_1_link' ) ) {
@@ -39,3 +39,38 @@
         echo '</ul>';
     ?>
 </div>
+
+<script type="text/javascript">
+    (function($) {
+        $(window).load(function() {
+            $('#slider-2').flexslider({
+                // change #slider to #carousel to use the carousel and uncomment all the lines
+                animation: "slide",
+                prevText: " ",
+                nextText: " ",
+                slideshow: true,
+                directionNav: true,
+                pauseOnHover: true,
+                slideshowSpeed: 7000,
+                animationSpeed: 600,
+                smoothHeight: true,
+                controlNav: true,
+                animationLoop: true,
+                //slideshow: false,
+                //itemWidth: 210,
+                //itemMargin: 5,
+                //asNavFor: '#slider'
+              });
+
+              /*$('#slider').flexslider({
+                animation: "slide",
+                prevText: " ",
+                nextText: " ",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                sync: "#carousel"
+              });*/
+        });
+    })(jQuery);
+</script>

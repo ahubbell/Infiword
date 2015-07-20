@@ -70,3 +70,11 @@
             <?php endwhile; // End the loop ?>
         </div>
         <!-- /single-page-content -->
+
+        <style type="text/css">
+            #single-page-content {
+                max-width: 62.5rem !important;
+                margin: 0 auto;
+                float: inherit;
+            }
+        </style>

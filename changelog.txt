@@ -1,9 +1,23 @@
 Theme Name:         Infiword
 Theme URI:          http://infismash.com/demos/wordpress/infiword
-Current Version:    2.1.0
+Current Version:    2.1.1
 Author:             Nirmalya Ghosh
 Author URI:         http://infismash.com/
 Copyright:          (c) 2015 Nirmalya Ghosh
+
+ July  2015 - 2.1.1
+===========================================================
+- Removed Orbit slider totally and used flexslider
+- Major CSS changes
+- Updated screenshot
+- Bug fixes in footer.php and header.php
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 
 July 17 2015 - 2.1.0
 ===========================================================

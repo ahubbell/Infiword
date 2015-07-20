@@ -1,6 +1,6 @@
-<div class="small-12 large-12 columns custom-home-page-slider" id="slider-content"> 
+<div class="small-12 large-12 columns custom-home-page-slider flexslider" id="slider">
     <?php
-        echo '<ul data-orbit>';
+        echo '<ul class="slides">';
         if ( get_theme_mod('foundationbuddy_custom_home_page_slider_1_image_1') ) {
             $foundationbuddy_custom_home_page_slider_1_image_1 = '<img src="'.get_theme_mod('foundationbuddy_custom_home_page_slider_1_image_1').'">';
             if ( get_theme_mod( 'foundationbuddy_custom_home_page_slider_1_image_1_link' ) ) {
