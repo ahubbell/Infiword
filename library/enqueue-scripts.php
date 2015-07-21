@@ -43,6 +43,7 @@ if( ! function_exists( 'foundationbuddy_scripts_and_styles ' ) ) {
 	    global $is_IE;
 	    if ($is_IE) {
 	       wp_register_script ( 'html5shiv', "/js/vendor/html5.js" , false, true);
+	       wp_register_script ( 'respond', "/js/vendor/respond.js" , false, true);
 	    }
 
 	    // enqueue styles and scripts
@@ -56,6 +57,7 @@ if( ! function_exists( 'foundationbuddy_scripts_and_styles ' ) ) {
         wp_enqueue_script( 'swipebox-js' );
         wp_enqueue_script( 'custom-js' );
 	    wp_enqueue_script( 'html5shiv' );
+	    wp_enqueue_script( 'respond' );
         wp_enqueue_script('masonry');
 
 	  }

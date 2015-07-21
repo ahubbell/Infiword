@@ -589,13 +589,6 @@ section#relatedposts h3 {
     font-weight: 600;
 }
 iframe { width: 100% }
-.header-image-row { padding: 20px 12px 0px 12px }
-.header-image img {
-    width: 100%;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-}
 section.header-ads-container-section {
     padding-top: 30px;
     padding-bottom: 30px;
