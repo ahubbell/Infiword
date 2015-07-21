@@ -17,7 +17,7 @@
             <!-- article -->
             <article <?php post_class('single-card') ?> id="post-<?php the_ID(); ?>">
                 <header>
-                    <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
+                    <h2 class="entry-title single-post-header-title"><?php the_title(); ?></h2>
                     <?php foundationbuddy_entry_meta(); ?>
                 </header>
                 <?php if ( get_theme_mod('foundationbuddy_post_show_featured_image_on_single_page') == 'yes' ) {  ?>

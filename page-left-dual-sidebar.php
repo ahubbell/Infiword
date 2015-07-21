@@ -22,7 +22,7 @@ Template Name: Left Dual Sidebar
             <!-- article -->
             <article <?php post_class('single-card') ?> id="post-<?php the_ID(); ?>">
                 <header>
-                    <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
+                    <h2 class="entry-title single-post-header-title"><?php the_title(); ?></h2>
                 </header>
                     <!-- featured image -->
                     <?php get_template_part( 'templates/featured', 'image' ); ?>

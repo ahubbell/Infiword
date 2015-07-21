@@ -101,7 +101,7 @@ img {
     display: table;
 }
 .clearfix:after { clear: both }
-.row { max-width: 100% }
+.row { max-width: 86em; }
 .hide { display: none }
 .antialiased {
     -webkit-font-smoothing: antialiased;
@@ -320,7 +320,7 @@ article.index-card header img {
     margin-top: 20px;
 }
 .not-found { margin-top: 20px }
-h1.entry-title { text-transform: uppercase }
+h2.entry-title { text-transform: uppercase }
 .post-entry-meta h2 a {
     color: #222;
     text-transform: uppercase;
@@ -816,8 +816,8 @@ footer.full-width.copyright {
 .copyright-right,
 .copyright-right a,
 .copyright-right p {
-    float: right;
-    text-align: right;
+    /*float: right;
+    text-align: right;*/
 }
 .love-foundationbuddy,
 .love-foundationbuddy a {

@@ -16,7 +16,7 @@
             
             <!-- header -->
 			<header>
-				<h1 class="entry-title"><?php _e('File Not Found', 'foundationbuddy'); ?></h1>
+				<h2 class="entry-title"><?php _e('File Not Found', 'foundationbuddy'); ?></h2>
 			</header>
             <!-- /header -->
             
