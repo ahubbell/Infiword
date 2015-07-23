@@ -277,7 +277,7 @@ section#custom-homepage-first-section { padding-top: 20px; }
     color: #414a51;
     padding: 0.75em 0;
 }
-body > header.contain-to-grid {
+header.contain-to-grid {
     max-width: 100%;
     padding-bottom: 0;
     background: #63C1FF;
@@ -324,6 +324,11 @@ h2.entry-title { text-transform: uppercase }
 .post-entry-meta h2 a {
     color: #222;
     text-transform: uppercase;
+}
+.post-entry-meta a {
+    color: #83ADBD;
+    font-size: 0.94em;
+    font-weight: 900;
 }
 .post-entry-meta { padding: 0.313em 1.563em }
 .entry-content { padding: 0.313em 1.563em }
@@ -445,6 +450,40 @@ span#subscription-toggle {
 header .entry-tags {
     color: #444444;
     font-size: 0.94em;
+}
+.category-query h2,
+.author-query h2,
+.search-query h2 {
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 700;
+    font-style: italic;
+}
+.category-page-description p,
+h3.author-page-description {
+    text-align: center;
+    color: #f1f1f1;
+    padding: 10px;
+}
+.category-query,
+.author-query,
+.search-query {
+    background-color: rgb(99, 193, 255);
+    color: #fff;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding: 1.563em 1.563em;
+}
+.author-page-avatar { text-align: center; }
+.author-page-avatar img {
+    float: none;
+    margin-bottom: 20px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 p.entry-tags {
     font-size: 15px;
@@ -1015,7 +1054,6 @@ ul.clearing-thumbs img {
 .admin-bar > .fixed { margin-top: 2rem }
 .f-topbar-fixed > .container {
     margin-top: -20px;
-    padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- *
  * Orbit
@@ -1654,3 +1692,86 @@ nav.top-bar.footer-menu {
 .foundation-sticky {
     z-index: 9999;
 }
+/* ------------------------------------------------------------------------- *
+ * Post Formats
+/* ------------------------------------------------------------------------- */
+.chat-transcript {
+    background-color: #f6f6f6;
+    padding: 20px 30px 20px 30px;
+    border-left: 5px solid #008CBA; 
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.format-chat .chat-speaker-1 .chat-author,
+.format-chat .chat-speaker-11 .chat-author{color:#7dcee0}
+.format-chat .chat-speaker-2 .chat-author,
+.format-chat .chat-speaker-12 .chat-author{color:#79ec72}
+.format-chat .chat-speaker-3 .chat-author,
+.format-chat .chat-speaker-13 .chat-author{color:#57c884}
+.format-chat .chat-speaker-4 .chat-author,
+.format-chat .chat-speaker-14 .chat-author{color:#bcb1cb}
+.format-chat .chat-speaker-5 .chat-author,
+.format-chat .chat-speaker-15 .chat-author{color:#faee25}
+.format-chat .chat-speaker-6 .chat-author,
+.format-chat .chat-speaker-16 .chat-author{color:#5ae90b}
+.format-chat .chat-speaker-7 .chat-author,
+.format-chat .chat-speaker-17 .chat-author{color:#9792e0}
+.format-chat .chat-speaker-8 .chat-author,
+.format-chat .chat-speaker-18 .chat-author{color:#9af0c8}
+.format-chat .chat-speaker-9 .chat-author,
+.format-chat .chat-speaker-19 .chat-author{color:#45d17f}
+.format-chat .chat-speaker-10 .chat-author,
+.format-chat .chat-speaker-20 .chat-author{color:#d15be3}
+.chat-row { padding-bottom: 20px; }
+.chat-author {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+}
+.gap { padding-right: 10px;}
+.chat-text {
+    margin-left: 36px;
+    background-color: #f1f1f1;
+    padding-left: 10px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.vcard {
+    border: 0px;
+    padding-bottom: 0px;
+}
+.format-aside .entry-title,
+.format-status .entry-title {
+    display: none;
+}
+#search-page-content .format-aside,
+#search-page-content .format-status,
+#front-page-content .format-aside,
+#front-page-content .format-status {
+    background-color: rgb(214, 221, 228);
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCI+CjxmaWx0ZXIgaWQ9Im4iIHg9IjAiIHk9IjAiPgo8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC43IiBudW1PY3RhdmVzPSIxMCIgc3RpdGNoVGlsZXM9InN0aXRjaCI+PC9mZVR1cmJ1bGVuY2U+CjwvZmlsdGVyPgo8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0icmdiKDIxNCwgMjIxLCAyMjgpIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjbikiIG9wYWNpdHk9IjAuOCI+PC9yZWN0Pgo8L3N2Zz4=");
+}
+.format-aside .post-entry-meta h2,
+.format-status .post-entry-meta h2 {
+    visibility: hidden;
+    padding-top: 0px;
+    line-height: 0px;
+}
+/* ------------------------------------------------------------------------- *
+ * Paage load animations
+/* ------------------------------------------------------------------------- */
+.animation-outer-wrapper .animation-inner-wrapper {
+    animation-duration: 0.25s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+}
+/*.animation-outer-wrapper .animation-inner-wrapper--fadein { animation-name: fadeIn; }
+.animation-outer-wrapper.is-exiting .animation-inner-wrapper { animation-direction: alternate-reverse; }*/
+
+.smoothstate-on-start {
+    animation-name: fadeIn;
+}
+.smoothstate-on-progress { animation-name: slideInLeft; }
+.smoothstate-on-ready { animation-name: bounceIn;}

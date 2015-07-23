@@ -54,6 +54,20 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'title'       => __( 'Blog Page', 'foundationbuddy' ),
         'description' => __( 'Edit the layout of the blog page of your website.', 'foundationbuddy' ),
     ) );
+
+    //Search page panel
+    $wp_customize->add_panel( 'search_page', array(
+        'priority'    => 10,
+        'title'       => __( 'Search Page', 'foundationbuddy' ),
+        'description' => __( 'Edit the layout of the Search page of your website.', 'foundationbuddy' ),
+    ) );
+
+    //Author page panel
+    $wp_customize->add_panel( 'author_page', array(
+        'priority'    => 10,
+        'title'       => __( 'Author Page', 'foundationbuddy' ),
+        'description' => __( 'Edit the layout of the Author page of your website.', 'foundationbuddy' ),
+    ) );
     
     //Portfolio page panel
     $wp_customize->add_panel( 'portfolio_page', array(
@@ -296,6 +310,26 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'priority'    => 10,
         'panel'       => 'blog_page',
         'description' => __( 'Choose whether you want to show author bio after the end of every post or not.', 'foundationbuddy' ),
+    ) );
+
+    /* Author page options */
+          
+    //Author page layout
+    $wp_customize->add_section( 'foundationbuddy_author_page_layout_section' , array(
+        'title'       => __( 'Layout', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'author_page',
+        'description' => __( 'Choose the layout that you want to use for the Author posts page.', 'foundationbuddy' ),
+    ) );
+
+    /* Search page options */
+          
+    //Search page layout
+    $wp_customize->add_section( 'foundationbuddy_search_page_layout_section' , array(
+        'title'       => __( 'Layout', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'search_page',
+        'description' => __( 'Choose the layout that you want to use for the Search posts page.', 'foundationbuddy' ),
     ) );
     
     /* Portfolio page options */
@@ -592,7 +626,7 @@ function foundationbuddy_controls( $controls ) {
     /* ------------------------------------------------------------------------- */
 
     // Custom Header background
-    /*$controls[] = array(
+    $controls[] = array(
         'type'        => 'background',
         'settings'    => 'foundationbuddy_custom_header_background',
         'label'       => __( 'Custom header background', 'foundationbuddy' ),
@@ -608,8 +642,8 @@ function foundationbuddy_controls( $controls ) {
             'opacity'  => 100
         ),
         'priority'    => 10,
-        'output'      => 'body > header.contain-to-grid',
-    );*/
+        'output'      => 'header.contain-to-grid',
+    );
     
     //footer advertisement count control
     $controls[] = array(
@@ -947,6 +981,44 @@ function foundationbuddy_controls( $controls ) {
             'right-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cr.png',
         ),
     );
+
+    //Author page layout
+    $controls[] = array(
+        'type'        => 'radio-image',
+        'settings'     => 'foundationbuddy_author_page_layout',
+        'label'       => __( 'Author page layout', 'foundationbuddy' ),
+        'description' => __( 'Choose the layout.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_author_page_layout_section',
+        'default'     => 'right-sidebar',
+        'priority'    => 10,
+        'choices'     => array(
+            'right-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cr.png',
+            'left-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cl.png',
+            'full-width' => get_template_directory_uri() . '/kirki/assets/images/1c.png',
+            'dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cm.png',
+            'left-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cl.png',
+            'right-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cr.png',
+        ),
+    );
+
+    //Search page layout
+    $controls[] = array(
+        'type'        => 'radio-image',
+        'settings'     => 'foundationbuddy_search_page_layout',
+        'label'       => __( 'Search page layout', 'foundationbuddy' ),
+        'description' => __( 'Choose the layout.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_search_page_layout_section',
+        'default'     => 'right-sidebar',
+        'priority'    => 10,
+        'choices'     => array(
+            'right-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cr.png',
+            'left-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cl.png',
+            'full-width' => get_template_directory_uri() . '/kirki/assets/images/1c.png',
+            'dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cm.png',
+            'left-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cl.png',
+            'right-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cr.png',
+        ),
+    );
     
     //featured images for single posts
     $controls[] = array(
@@ -1146,7 +1218,15 @@ function foundationbuddy_controls( $controls ) {
         'priority'    => 10,
     );
     
-    
+    //Font color
+    $controls[] = array(
+        'type'     => 'color',
+        'settings'  => 'foundationbuddy_general_font_color',
+        'label'    => __( 'Font Color', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_general_font_section',
+        'default'     => '#de3495',
+        'priority'    => 10,
+     );
     
     // general font
     $controls[] = array(

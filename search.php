@@ -1,31 +1,95 @@
 <?php get_header(); ?>
+    
+<!-- full-width layout -->
+<?php if ( get_theme_mod('foundationbuddy_search_page_layout') == 'full-width' ) {  ?>
 
-<!-- Row for main content area -->
-	<div class="small-12 large-8 columns" id="page-content" role="main">
-	
-	<?php if ( have_posts() ) : ?>
-	
-		<?php /* Start the Loop */ ?>
-		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', get_post_format() ); ?>
-		<?php endwhile; ?>
-		
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		
-	<?php endif; // end have_posts() check ?>
-	
-	<?php /* Display navigation to next/previous pages when applicable */ ?>
-	<?php if ( function_exists('foundationbuddy_pagination') ) { foundationbuddy_pagination(); } else if ( is_paged() ) { ?>
-		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationbuddy' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationbuddy' ) ); ?></div>
-		</nav>
-	<?php } ?>
+	<style type="text/css">
+        #search-page-content {
+            max-width: 62.5rem !important;
+            margin: 0 auto;
+            float: inherit;
+        }
+    </style>
 
+	<div class="small-12 large-12 columns" id="search-page-content" role="main">
+		<?php get_template_part( 'layouts/search-page/page', 'template' ); ?>
 	</div>
-	<aside id="sidebar" class="small-12 large-4 columns">
-            <?php get_sidebar(); ?>
-        </aside><!-- /#sidebar -->
-		
+
+<?php } ?>
+<!-- /full-width layout -->
+
+<!-- left-sidebar layout -->   
+<?php if ( get_theme_mod('foundationbuddy_search_page_layout') == 'left-sidebar' ) {  ?>
+        
+	<aside id="left-sidebar" class="small-12 large-4 columns">
+	    <?php get_sidebar(); ?>
+	</aside><!-- /#sidebar -->
+	<div class="small-12 large-8 columns" id="search-page-content" role="main">
+		<?php get_template_part( 'layouts/search-page/page', 'template' ); ?>
+    </div>
+
+<?php } ?>
+<!-- /left-sidebar layout -->   
+
+ <!-- dual-sidebar layout -->      
+<?php if ( get_theme_mod('foundationbuddy_search_page_layout') == 'dual-sidebar' ) {  ?>
+        
+	<aside id="left-sidebar" class="small-12 large-3 columns">
+	    <?php get_sidebar(); ?>
+	</aside><!-- /#sidebar -->
+	<div class="small-12 large-6 columns" id="search-page-content" role="main">
+		<?php get_template_part( 'layouts/search-page/page', 'template' ); ?>
+	</div>
+	<aside id="sidebar" class="small-12 large-3 columns">
+	    <?php get_sidebar( 'second' ); ?>
+	</aside><!-- /#sidebar -->
+    
+<?php } ?>
+<!-- /dual-sidebar layout -->   
+
+<!-- left-dual-sidebar layout -->     
+<?php if ( get_theme_mod('foundationbuddy_search_page_layout') == 'left-dual-sidebar' ) { ?>
+        
+	<aside id="sidebar" class="small-12 large-3 columns">
+	    <?php get_sidebar(); ?>
+	</aside><!-- /#sidebar -->
+	<aside id="left-dual-sidebar" class="small-12 large-3 columns">
+	    <?php get_sidebar( 'second' ); ?>
+	</aside><!-- /#sidebar -->
+	<div class="small-12 large-6 columns" id="search-page-content" role="main">
+		<?php get_template_part( 'layouts/search-page/page', 'template' ); ?>
+	</div>
+    
+<?php  } ?>
+<!-- /left-dual-sidebar layout -->   
+
+<!-- right-dual-sidebar layout -->   
+<?php if ( get_theme_mod('foundationbuddy_search_page_layout') == 'right-dual-sidebar' ) {  ?>
+
+	<div class="small-12 large-6 columns" id="search-page-content" role="main">
+		<?php get_template_part( 'layouts/search-page/page', 'template' ); ?>
+	</div>
+	<aside id="sidebar" class="small-12 large-3 columns">
+	    <?php get_sidebar(); ?>
+	</aside><!-- /#sidebar -->    
+	<aside id="sidebar" class="small-12 large-3 columns">
+	    <?php get_sidebar( 'second' ); ?>
+	</aside><!-- /#sidebar -->
+
+<?php } ?>
+<!-- /right-dual-sidebar layout -->
+
+<!-- right-sidebar layout -->
+<?php if ( get_theme_mod('foundationbuddy_search_page_layout') == 'right-sidebar' || get_theme_mod('foundationbuddy_search_page_layout') == '' ) {  ?>
+
+	<div class="small-12 large-8 columns" id="search-page-content" role="main">
+		<?php get_template_part( 'layouts/search-page/page', 'template' ); ?>
+	</div>
+	<aside id="sidebar" class="small-12 large-4 columns">    
+	    <?php get_sidebar(); ?>
+	</aside><!-- /#sidebar -->
+
+<?php  } ?>
+<!-- /right-sidebar layout -->
+
 <?php get_footer(); ?>
