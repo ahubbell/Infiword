@@ -844,6 +844,7 @@ footer.full-width.copyright {
 }
 .full-width.footer-widget {
    background-color: #faf9f9;
+   padding-top: 20px;
 }
 .copyright-right,
 .copyright-right a,

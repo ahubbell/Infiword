@@ -39,17 +39,6 @@ if( ! function_exists( 'foundationbuddy_theme_support' ) ) {
             'additional' => __( 'Additional Navigation', 'foundationbuddy' ),
             'footer' => __( 'Footer Navigation', 'foundationbuddy' )
         ));
-
-        // Add custom background support
-        add_theme_support( 'custom-background',
-            array(
-                'default-image' => '',  // background image default
-                'default-color' => 'ededed', // background color default (dont add the #)
-                'wp-head-callback' => '_custom_background_cb',
-                'admin-head-callback' => '',
-                'admin-preview-callback' => ''
-            )
-        );
         
         //Add custom width support
         if ( ! isset( $content_width ) ) {

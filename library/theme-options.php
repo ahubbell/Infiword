@@ -86,7 +86,7 @@ function foundationbuddy_panels_sections( $wp_customize ) {
     //Custom home page panel
     $wp_customize->add_panel( 'custom_home_page', array(
         'priority'    => 10,
-        'title'       => __( 'Custom home Page', 'foundationbuddy' ),
+        'title'       => __( 'Custom Home Page', 'foundationbuddy' ),
         'description' => __( 'Edit the layout of the home page of your website.', 'foundationbuddy' ),
     ) );
 
@@ -151,14 +151,6 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'priority'    => 10,
         'panel'       => 'header',
         'description' => __( 'Upload your custom header image. This header image will be shown on all the pages of the website.', 'foundationbuddy' ),
-    ) );
-
-    // Header background
-    $wp_customize->add_section( 'foundationbuddy_custom_header_background_section' , array(
-        'title'       => __( 'Header background', 'foundationbuddy' ),
-        'priority'    => 10,
-        'panel'       => 'header',
-        'description' => __( 'Customize the background of your header.', 'foundationbuddy' ),
     ) );
     
     /* Footer */
@@ -457,6 +449,14 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'panel'       => 'custom_style',
         'description' => __( 'General font', 'foundationbuddy' ),
     ) );
+
+    //Background section
+    $wp_customize->add_section( 'foundationbuddy_background_section' , array(
+        'title'       => __( 'Background', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'custom_style',
+        'description' => __( 'Background color of the body', 'foundationbuddy' ),
+    ) );
     
     //Custom Home page slider 1
     $wp_customize->add_section( 'foundationbuddy_custom_home_page_slider_1_section' , array(
@@ -621,19 +621,15 @@ function foundationbuddy_controls( $controls ) {
         'priority'    => 10,
     );
 
-    /* ------------------------------------------------------------------------- *
-     *  TODO: Issue reported in Kirki
-    /* ------------------------------------------------------------------------- */
-
     // Custom Header background
     $controls[] = array(
         'type'        => 'background',
-        'settings'    => 'foundationbuddy_custom_header_background',
-        'label'       => __( 'Custom header background', 'foundationbuddy' ),
+        'settings'    => 'foundationbuddy_header_background',
+        'label'       => __( 'Header background', 'foundationbuddy' ),
         'description' => __( 'Customize your header.', 'foundationbuddy' ),
-        'section'     => 'foundationbuddy_custom_header_background_section',
+        'section'     => 'foundationbuddy_background_section',
         'default'     => array(
-            'color'    => 'rgba(25,170,141,0.7)',
+            'color'    => 'rgba(99,193,255,1)',
             'image'    => '',
             'repeat'   => 'no-repeat',
             'size'     => 'cover',
@@ -1217,16 +1213,131 @@ function foundationbuddy_controls( $controls ) {
         'default'     => '',
         'priority'    => 10,
     );
+
+
+    //Body background
+    $controls[] = array(
+        'type'     => 'background',
+        'settings'  => 'foundationbuddy_body_background',
+        'label'    => __( 'Body background', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_background_section',
+        'default'     => array(
+            'color'    => '#ededed',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => 'body',
+    );
+
+    //Article background
+    $controls[] = array(
+        'type'     => 'background',
+        'settings'  => 'foundationbuddy_article_background',
+        'label'    => __( 'Article background', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_background_section',
+        'default'     => array(
+            'color'    => '#fff',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => '.page-card',
+    );
+
+    //Sidebar background
+    $controls[] = array(
+        'type'     => 'background',
+        'settings'  => 'foundationbuddy_sidebar_background',
+        'label'    => __( 'Sidebar background', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_background_section',
+        'default'     => array(
+            'color'    => 'rgba(255, 255, 255, 0.5)',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => '#left-sidebar .panel, #left-dual-sidebar .panel, #sidebar .panel',
+    );
+
+    //Footer background
+    $controls[] = array(
+        'type'     => 'background',
+        'settings'  => 'foundationbuddy_footer_background',
+        'label'    => __( 'Footer background', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_background_section',
+        'default'     => array(
+            'color'    => '#faf9f9',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => '.full-width.footer-widget',
+    );
+
+    //Footer advertisement background
+    $controls[] = array(
+        'type'     => 'background',
+        'settings'  => 'foundationbuddy_footer_advertisement_background',
+        'label'    => __( 'Footer advertisement background', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_background_section',
+        'default'     => array(
+            'color'    => '#333',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => 'footer.full-width',
+    );
+
+    //Footer copyright background
+    $controls[] = array(
+        'type'     => 'background',
+        'settings'  => 'foundationbuddy_footer_copyright_background',
+        'label'    => __( 'Footer copyright background', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_background_section',
+        'default'     => array(
+            'color'    => '#33363b',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => 'footer.full-width.copyright',
+    );
     
     //Font color
-    $controls[] = array(
+    /*$controls[] = array(
         'type'     => 'color',
         'settings'  => 'foundationbuddy_general_font_color',
         'label'    => __( 'Font Color', 'foundationbuddy' ),
         'section'  => 'foundationbuddy_general_font_section',
         'default'     => '#de3495',
         'priority'    => 10,
-     );
+     );*/
     
     // general font
     $controls[] = array(

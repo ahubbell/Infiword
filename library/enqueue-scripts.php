@@ -36,9 +36,6 @@ if( ! function_exists( 'foundationbuddy_scripts_and_styles ' ) ) {
           
         // adding swipebox scripts file in the footer
 	    wp_register_script( 'swipebox-js', get_template_directory_uri() . '/js/vendor/jquery.swipebox.js', array( 'jquery' ), '', true );
-
-	    // adding smoothstate scripts file in the footer
-	    wp_register_script( 'smoothstate-js', get_template_directory_uri() . '/js/vendor/jquery.smoothState.js', array( 'jquery' ), '', true );
           
         // adding Custom scripts file in the footer
 	    wp_register_script( 'custom-js', get_template_directory_uri() . '/js/vendor/custom.js', array( 'jquery' ), '', true );
@@ -58,7 +55,6 @@ if( ! function_exists( 'foundationbuddy_scripts_and_styles ' ) ) {
         wp_enqueue_script( 'fitvids-js' );
         wp_enqueue_script( 'flexslider-js' );
         wp_enqueue_script( 'swipebox-js' );
-        wp_enqueue_script( 'smoothstate-js' );
         wp_enqueue_script( 'custom-js' );
 	    wp_enqueue_script( 'html5shiv' );
 	    wp_enqueue_script( 'respond' );
