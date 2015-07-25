@@ -32,3 +32,5 @@
     
 </article>
 <!-- /article -->
+
+<div class="separator"></div>

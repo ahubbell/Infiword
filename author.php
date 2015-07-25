@@ -1,8 +1,8 @@
 <?php get_header(); ?>
     
-<!-- full-width layout -->
 <?php if ( get_theme_mod('foundationbuddy_author_page_layout') == 'full-width' ) {  ?>
 
+	<!-- full-width layout -->
 	<style type="text/css">
         #author-page-content {
             max-width: 62.5rem !important;
@@ -14,26 +14,28 @@
 	<div class="small-12 large-12 columns" id="author-page-content" role="main">
 		<?php get_template_part( 'layouts/author-page/page', 'template' ); ?>
 	</div>
+	<!-- /full-width layout -->
 
 <?php } ?>
-<!-- /full-width layout -->
 
-<!-- left-sidebar layout -->   
+
 <?php if ( get_theme_mod('foundationbuddy_author_page_layout') == 'left-sidebar' ) {  ?>
-        
+	
+	<!-- left-sidebar layout -->           
 	<aside id="left-sidebar" class="small-12 large-4 columns">
 	    <?php get_sidebar(); ?>
 	</aside><!-- /#sidebar -->
 	<div class="small-12 large-8 columns" id="author-page-content" role="main">
 		<?php get_template_part( 'layouts/author-page/page', 'template' ); ?>
     </div>
+    <!-- /left-sidebar layout -->   
 
 <?php } ?>
-<!-- /left-sidebar layout -->   
 
- <!-- dual-sidebar layout -->      
+
 <?php if ( get_theme_mod('foundationbuddy_author_page_layout') == 'dual-sidebar' ) {  ?>
-        
+ 	
+ 	<!-- dual-sidebar layout -->              
 	<aside id="left-sidebar" class="small-12 large-3 columns">
 	    <?php get_sidebar(); ?>
 	</aside><!-- /#sidebar -->
@@ -43,13 +45,13 @@
 	<aside id="sidebar" class="small-12 large-3 columns">
 	    <?php get_sidebar( 'second' ); ?>
 	</aside><!-- /#sidebar -->
-    
-<?php } ?>
-<!-- /dual-sidebar layout -->   
+	<!-- /dual-sidebar layout -->   
 
-<!-- left-dual-sidebar layout -->     
+<?php } ?>
+
 <?php if ( get_theme_mod('foundationbuddy_author_page_layout') == 'left-dual-sidebar' ) { ?>
-        
+
+	<!-- left-dual-sidebar layout -->             
 	<aside id="sidebar" class="small-12 large-3 columns">
 	    <?php get_sidebar(); ?>
 	</aside><!-- /#sidebar -->
@@ -59,13 +61,13 @@
 	<div class="small-12 large-6 columns" id="author-page-content" role="main">
 		<?php get_template_part( 'layouts/author-page/page', 'template' ); ?>
 	</div>
-    
-<?php  } ?>
-<!-- /left-dual-sidebar layout -->   
+	<!-- /left-dual-sidebar layout -->   
 
-<!-- right-dual-sidebar layout -->   
+<?php } ?>
+
 <?php if ( get_theme_mod('foundationbuddy_author_page_layout') == 'right-dual-sidebar' ) {  ?>
 
+	<!-- right-dual-sidebar layout -->   
 	<div class="small-12 large-6 columns" id="author-page-content" role="main">
 		<?php get_template_part( 'layouts/author-page/page', 'template' ); ?>
 	</div>
@@ -75,21 +77,22 @@
 	<aside id="sidebar" class="small-12 large-3 columns">
 	    <?php get_sidebar( 'second' ); ?>
 	</aside><!-- /#sidebar -->
+	<!-- /right-dual-sidebar layout -->
 
 <?php } ?>
-<!-- /right-dual-sidebar layout -->
 
-<!-- right-sidebar layout -->
+
 <?php if ( get_theme_mod('foundationbuddy_author_page_layout') == 'right-sidebar' || get_theme_mod('foundationbuddy_author_page_layout') == '' ) {  ?>
 
+	<!-- right-sidebar layout -->
 	<div class="small-12 large-8 columns" id="author-page-content" role="main">
 		<?php get_template_part( 'layouts/author-page/page', 'template' ); ?>
 	</div>
 	<aside id="sidebar" class="small-12 large-4 columns">    
 	    <?php get_sidebar(); ?>
 	</aside><!-- /#sidebar -->
+	<!-- /right-sidebar layout -->
 
-<?php  } ?>
-<!-- /right-sidebar layout -->
+<?php } ?>
 
 <?php get_footer(); ?>

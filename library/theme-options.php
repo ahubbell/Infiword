@@ -68,6 +68,20 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'title'       => __( 'Author Page', 'foundationbuddy' ),
         'description' => __( 'Edit the layout of the Author page of your website.', 'foundationbuddy' ),
     ) );
+
+    //Category page panel
+    $wp_customize->add_panel( 'category_page', array(
+        'priority'    => 10,
+        'title'       => __( 'Category Page', 'foundationbuddy' ),
+        'description' => __( 'Edit the layout of the Category page of your website.', 'foundationbuddy' ),
+    ) );
+
+    //Tag page panel
+    $wp_customize->add_panel( 'tag_page', array(
+        'priority'    => 10,
+        'title'       => __( 'Tag Page', 'foundationbuddy' ),
+        'description' => __( 'Edit the layout of the Tag page of your website.', 'foundationbuddy' ),
+    ) );
     
     //Portfolio page panel
     $wp_customize->add_panel( 'portfolio_page', array(
@@ -264,14 +278,6 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'description' => __( 'Choose the layout that you want to use for the blog posts page.', 'foundationbuddy' ),
     ) );
     
-    //Featured images for available posts
-    $wp_customize->add_section( 'foundationbuddy_post_show_featured_image_on_single_page_section' , array(
-        'title'       => __( 'Featured images', 'foundationbuddy' ),
-        'priority'    => 10,
-        'panel'       => 'blog_page',
-        'description' => __( 'Show featured image within posts. This featured image will be shown above the post body just below the title of the post.', 'foundationbuddy' ),
-    ) );
-    
     //Related posts
     $wp_customize->add_section( 'foundationbuddy_show_related_posts_section' , array(
         'title'       => __( 'Related posts', 'foundationbuddy' ),
@@ -322,6 +328,26 @@ function foundationbuddy_panels_sections( $wp_customize ) {
         'priority'    => 10,
         'panel'       => 'search_page',
         'description' => __( 'Choose the layout that you want to use for the Search posts page.', 'foundationbuddy' ),
+    ) );
+
+    /* Category page options */
+          
+    //Category page layout
+    $wp_customize->add_section( 'foundationbuddy_category_page_layout_section' , array(
+        'title'       => __( 'Layout', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'category_page',
+        'description' => __( 'Choose the layout that you want to use for the Category posts page.', 'foundationbuddy' ),
+    ) );
+
+    /* Tag page options */
+          
+    //Tag page layout
+    $wp_customize->add_section( 'foundationbuddy_tag_page_layout_section' , array(
+        'title'       => __( 'Layout', 'foundationbuddy' ),
+        'priority'    => 10,
+        'panel'       => 'tag_page',
+        'description' => __( 'Choose the layout that you want to use for the Tag posts page.', 'foundationbuddy' ),
     ) );
     
     /* Portfolio page options */
@@ -1015,19 +1041,42 @@ function foundationbuddy_controls( $controls ) {
             'right-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cr.png',
         ),
     );
-    
-    //featured images for single posts
+
+    //Category page layout
     $controls[] = array(
-        'type'        => 'radio',
-        'settings'     => 'foundationbuddy_post_show_featured_image_on_single_page',
-        'label'       => __( 'Featured images for single posts', 'foundationbuddy' ),
-        'description' => __( 'Choose whether to show featured images on single posts or not.', 'foundationbuddy' ),
-        'section'     => 'foundationbuddy_post_show_featured_image_on_single_page_section',
-        'default'     => 'yes',
+        'type'        => 'radio-image',
+        'settings'     => 'foundationbuddy_category_page_layout',
+        'label'       => __( 'Category page layout', 'foundationbuddy' ),
+        'description' => __( 'Choose the layout.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_category_page_layout_section',
+        'default'     => 'right-sidebar',
         'priority'    => 10,
         'choices'     => array(
-            'yes' => __( 'Yes', 'foundationbuddy' ),
-            'no' => __( 'No', 'foundationbuddy' ),
+            'right-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cr.png',
+            'left-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cl.png',
+            'full-width' => get_template_directory_uri() . '/kirki/assets/images/1c.png',
+            'dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cm.png',
+            'left-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cl.png',
+            'right-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cr.png',
+        ),
+    );
+
+    //Tag page layout
+    $controls[] = array(
+        'type'        => 'radio-image',
+        'settings'     => 'foundationbuddy_tag_page_layout',
+        'label'       => __( 'Tag page layout', 'foundationbuddy' ),
+        'description' => __( 'Choose the layout.', 'foundationbuddy' ),
+        'section'     => 'foundationbuddy_tag_page_layout_section',
+        'default'     => 'right-sidebar',
+        'priority'    => 10,
+        'choices'     => array(
+            'right-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cr.png',
+            'left-sidebar' => get_template_directory_uri() . '/kirki/assets/images/2cl.png',
+            'full-width' => get_template_directory_uri() . '/kirki/assets/images/1c.png',
+            'dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cm.png',
+            'left-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cl.png',
+            'right-dual-sidebar' => get_template_directory_uri() . '/kirki/assets/images/3cr.png',
         ),
     );
     
@@ -1214,6 +1263,24 @@ function foundationbuddy_controls( $controls ) {
         'priority'    => 10,
     );
 
+    //Category, tag, search and author page description background
+    $controls[] = array(
+        'type'     => 'background',
+        'settings'  => 'foundationbuddy_category_tag_search_author_background',
+        'label'    => __( 'Category, tag, search and author page description background', 'foundationbuddy' ),
+        'section'  => 'foundationbuddy_background_section',
+        'default'     => array(
+            'color'    => 'rgba(99,193,255,1)',
+            'image'    => '',
+            'repeat'   => 'no-repeat',
+            'size'     => 'cover',
+            'attach'   => 'fixed',
+            'position' => 'left-top',
+            'opacity'  => 100
+        ),
+        'priority'    => 10,
+        'output'      => '.tag-query, .category-query, .author-query, .search-query',
+    );
 
     //Body background
     $controls[] = array(

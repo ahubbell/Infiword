@@ -301,6 +301,7 @@ article header.comment-author { text-align: left }
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
+i.fa.entry-meta { color: #000; }
 .single-card {
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -451,6 +452,7 @@ header .entry-tags {
     color: #444444;
     font-size: 0.94em;
 }
+.tag-query h2,
 .category-query h2,
 .author-query h2,
 .search-query h2 {
@@ -461,12 +463,14 @@ header .entry-tags {
     font-weight: 700;
     font-style: italic;
 }
+.tag-page-description p,
 .category-page-description p,
 h3.author-page-description {
     text-align: center;
     color: #f1f1f1;
     padding: 10px;
 }
+.tag-query,
 .category-query,
 .author-query,
 .search-query {
@@ -568,7 +572,6 @@ section#respond { margin-bottom: 20px; }
     background-color: #f6f6f6;
     font-size: 20px;
     border-left: 5px solid #008CBA;
-    background: url("../images/blockquotes.svg") #f6f6f6 no-repeat top left;
     background-size: 25px auto;
     padding-left: 40px;
     background-position: 8px 8px;
@@ -1747,12 +1750,13 @@ nav.top-bar.footer-menu {
 .format-status .entry-title {
     display: none;
 }
+#page-content .format-aside,
+#page-content .format-status,
 #search-page-content .format-aside,
 #search-page-content .format-status,
 #front-page-content .format-aside,
 #front-page-content .format-status {
     background-color: rgb(214, 221, 228);
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCI+CjxmaWx0ZXIgaWQ9Im4iIHg9IjAiIHk9IjAiPgo8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC43IiBudW1PY3RhdmVzPSIxMCIgc3RpdGNoVGlsZXM9InN0aXRjaCI+PC9mZVR1cmJ1bGVuY2U+CjwvZmlsdGVyPgo8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0icmdiKDIxNCwgMjIxLCAyMjgpIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjbikiIG9wYWNpdHk9IjAuOCI+PC9yZWN0Pgo8L3N2Zz4=");
 }
 .format-aside .post-entry-meta h2,
 .format-status .post-entry-meta h2 {
@@ -1760,19 +1764,12 @@ nav.top-bar.footer-menu {
     padding-top: 0px;
     line-height: 0px;
 }
-/* ------------------------------------------------------------------------- *
- * Paage load animations
-/* ------------------------------------------------------------------------- */
-.animation-outer-wrapper .animation-inner-wrapper {
-    animation-duration: 0.25s;
-    transition-timing-function: ease-in;
-    animation-fill-mode: both;
-}
-/*.animation-outer-wrapper .animation-inner-wrapper--fadein { animation-name: fadeIn; }
-.animation-outer-wrapper.is-exiting .animation-inner-wrapper { animation-direction: alternate-reverse; }*/
 
-.smoothstate-on-start {
-    animation-name: fadeIn;
+.post-format-indicator {
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(191, 191, 191);
+    margin-top: -30px;
+    text-transform: uppercase;
 }
-.smoothstate-on-progress { animation-name: slideInLeft; }
-.smoothstate-on-ready { animation-name: bounceIn;}

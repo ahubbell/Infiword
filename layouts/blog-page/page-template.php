@@ -13,13 +13,7 @@
                     <h2 class="entry-title single-post-header-title"><?php the_title(); ?></h2>
                     <?php foundationbuddy_entry_meta(); ?>
                 </header>
-                <?php if ( get_theme_mod('foundationbuddy_post_show_featured_image_on_single_page') == 'yes' ) {  ?>
-                    <!-- featured image -->
-                    <?php get_template_part( 'templates/featured', 'image' ); ?>
-                    <!-- /featured image -->
-                <?php } ?>
                 <?php get_template_part( 'library/post', 'formats' ); ?>
-                <div class="entry-content"><?php the_content(); ?></div>
                 <div class="separator"></div>
                 <div class="after-post-footer">
                     <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
