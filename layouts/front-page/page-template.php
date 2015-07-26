@@ -17,11 +17,11 @@
 
             <div class="separator"></div>
             
-            <?php if ( function_exists('foundationbuddy_pagination') ) { foundationbuddy_pagination(); } else if ( is_paged() ) { ?>
+            <?php if ( function_exists('infiword_pagination') ) { infiword_pagination(); } else if ( is_paged() ) { ?>
 
                 <nav id="post-nav">
-                    <div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationbuddy' ) ); ?></div>
-                    <div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationbuddy' ) ); ?></div>
+                    <div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'infiword' ) ); ?></div>
+                    <div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'infiword' ) ); ?></div>
                 </nav>
 
             <?php } ?>

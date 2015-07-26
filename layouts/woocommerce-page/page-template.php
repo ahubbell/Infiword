@@ -16,7 +16,7 @@
                                 <h2 class="entry-title single-post-header-title"><?php the_title(); ?></h2>
                             </header>
 
-                            <?php do_action( 'foundationbuddy_page_before_entry_content' ); ?>
+                            <?php do_action( 'infiword_page_before_entry_content' ); ?>
 
                             <div class="entry-content">
 
@@ -25,7 +25,7 @@
                             </div>
                             <footer>
 
-                                <?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'foundationbuddy' ), 'after' => '</p></nav>' ) ); ?>
+                                <?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'infiword' ), 'after' => '</p></nav>' ) ); ?>
 
                                 <p><?php the_tags(); ?></p>
                             </footer>

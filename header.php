@@ -41,15 +41,15 @@
                             <!-- title-area -->
                             <ul class="title-area">
                                 <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                                <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
+                                <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','infiword'); ?></span></a></li>
                             </ul>
                             <!-- /title-area -->
 
                             <!-- top-bar-section -->
                             <section class="top-bar-section">
-                                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
+                                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'infiword_menu_fallback', 'walker' => new infiword_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
 
-                                <?php if ( get_theme_mod( 'foundationbuddy_show_search_bar' ) == 'yes' || get_theme_mod( 'foundationbuddy_show_search_bar' ) == '') { ?>
+                                <?php if ( get_theme_mod( 'infiword_show_search_bar' ) == 'yes' || get_theme_mod( 'infiword_show_search_bar' ) == '') { ?>
 
                                 <!-- search bar -->
                                 <ul class="right" >
@@ -90,7 +90,7 @@
                     </div>
                     <div class="large-6 columns">
                         <?php 
-                            if ( get_theme_mod( 'foundationbuddy_header_advertisement' ) ) {
+                            if ( get_theme_mod( 'infiword_header_advertisement' ) ) {
                                 get_template_part( 'templates/header', 'advertisement' );
                             }
                         ?>
@@ -104,15 +104,15 @@
                         <!-- title-area -->
                         <ul class="title-area">
                             <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                            <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
+                            <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','infiword'); ?></span></a></li>
                         </ul>
                         <!-- /title-area -->
 
                         <!-- top-bar-section -->
                         <section class="top-bar-section secondary-menu">
-                            <?php wp_nav_menu( array( 'theme_location' => 'additional', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
+                            <?php wp_nav_menu( array( 'theme_location' => 'additional', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'infiword_menu_fallback', 'walker' => new infiword_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
 
-                            <?php if ( get_theme_mod( 'foundationbuddy_social_buttons' ) == 'yes' || get_theme_mod( 'foundationbuddy_social_buttons' ) == '' ) {
+                            <?php if ( get_theme_mod( 'infiword_social_buttons' ) == 'yes' || get_theme_mod( 'infiword_social_buttons' ) == '' ) {
                                 get_template_part( 'templates/social', 'buttons' );
                              } ?>
 

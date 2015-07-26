@@ -15,13 +15,13 @@
             <?php while ( have_posts() ) : the_post(); ?>
             
             <!-- the number of columns for the front page -->
-            <?php if ( get_theme_mod('foundationbuddy_front_page_column_count') == 'three' || get_theme_mod('foundationbuddy_front_page_column_count') == '' ) { ?>
+            <?php if ( get_theme_mod('infiword_front_page_column_count') == 'three' || get_theme_mod('infiword_front_page_column_count') == '' ) { ?>
                 <div class="small-12 large-4 columns masonry-content">
                     
-            <?php } if ( get_theme_mod('foundationbuddy_front_page_column_count') == 'two' ) { ?>
+            <?php } if ( get_theme_mod('infiword_front_page_column_count') == 'two' ) { ?>
                 <div class="small-12 large-6 columns masonry-content">
             
-            <?php } if ( get_theme_mod('foundationbuddy_front_page_column_count') == 'one' ) { ?>
+            <?php } if ( get_theme_mod('infiword_front_page_column_count') == 'one' ) { ?>
                 <div class="small-12 large-12 columns masonry-content">
             <?php } ?>
                             
@@ -41,10 +41,10 @@
                     
     <!-- pagination -->
 	<?php /* Display navigation to next/previous pages when applicable */ ?>
-	<?php if ( function_exists('foundationbuddy_pagination') ) { foundationbuddy_pagination(); } else if ( is_paged() ) { ?>
+	<?php if ( function_exists('infiword_pagination') ) { infiword_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationbuddy' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationbuddy' ) ); ?></div>
+			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'infiword' ) ); ?></div>
+			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'infiword' ) ); ?></div>
 		</nav>
 	<?php } ?>
     <!-- /pagination -->

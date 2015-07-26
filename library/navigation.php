@@ -1,9 +1,12 @@
-<?php 
-/*===================================
-=            Navigation             =
-===================================*/
+<?php
+/* ------------------------------------------------------------------------- *
+ *  Navigation  
+/* ------------------------------------------------------------------------- */
+?>
 
-class foundationbuddy_walker extends Walker_Nav_Menu {
+<?php 
+
+class infiword_walker extends Walker_Nav_Menu {
 
 	/**
 	 * Specify the item type to allow different walkers

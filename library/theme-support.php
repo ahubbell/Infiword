@@ -8,12 +8,12 @@
  *  Add theme support
 /* ------------------------------------------------------------------------- */
 
-if( ! function_exists( 'foundationbuddy_theme_support' ) ) {
+if( ! function_exists( 'infiword_theme_support' ) ) {
     
-    function foundationbuddy_theme_support() {
+    function infiword_theme_support() {
         
         // Add language supports.
-        load_theme_textdomain('foundationbuddy-master', get_template_directory() . '/languages');
+        load_theme_textdomain('infiword-master', get_template_directory() . '/languages');
 
         // Add post thumbnail supports. http://codex.wordpress.org/Post_Thumbnails
         add_theme_support('post-thumbnails');
@@ -35,9 +35,9 @@ if( ! function_exists( 'foundationbuddy_theme_support' ) ) {
         // Add menu support. http://codex.wordpress.org/Function_Reference/register_nav_menus
         add_theme_support( 'menus' );
         register_nav_menus(array(
-            'primary' => __( 'Primary Navigation', 'foundationbuddy' ),
-            'additional' => __( 'Additional Navigation', 'foundationbuddy' ),
-            'footer' => __( 'Footer Navigation', 'foundationbuddy' )
+            'primary' => __( 'Primary Navigation', 'infiword' ),
+            'additional' => __( 'Additional Navigation', 'infiword' ),
+            'footer' => __( 'Footer Navigation', 'infiword' )
         ));
         
         //Add custom width support
@@ -55,6 +55,6 @@ if( ! function_exists( 'foundationbuddy_theme_support' ) ) {
     
 }
 
-add_action('after_setup_theme', 'foundationbuddy_theme_support'); /* end foundationbuddy theme support */
+add_action('after_setup_theme', 'infiword_theme_support'); /* end infiword theme support */
 
 ?>

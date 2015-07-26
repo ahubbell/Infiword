@@ -1,13 +1,15 @@
 <?php
+/* ------------------------------------------------------------------------- *
+ *  Contains the code to enqueue all the javascript files used in this theme
+/* ------------------------------------------------------------------------- */
+?>
 
-/**********************
-Enqueue CSS and Scripts
-**********************/
+<?php
 
 // loading modernizr and jquery, and reply script
-if( ! function_exists( 'foundationbuddy_scripts_and_styles ' ) ) {
+if( ! function_exists( 'infiword_scripts_and_styles ' ) ) {
     
-	function foundationbuddy_scripts_and_styles() {
+	function infiword_scripts_and_styles() {
 	  if (!is_admin()) {
 
 	    // modernizr (without media query polyfill)

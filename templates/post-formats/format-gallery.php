@@ -15,13 +15,13 @@
             <ul class="slides">
             
                 <?php foreach( $gallery['src'] AS $src ) {
-                    $img_id = foundationbuddy_get_attachment_id_from_src($src);
-                    $img_info = foundationbuddy_get_attachment( $img_id );
+                    $img_id = infiword_get_attachment_id_from_src($src);
+                    $img_info = infiword_get_attachment( $img_id );
                     $img_caption = $img_info['caption'];
                 ?>
                 
                 <li>
-                    <img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php _e('Gallery image','foundationbuddy'); ?>" />
+                    <img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php _e('Gallery image','infiword'); ?>" />
                     
                     <?php if ($img_caption): ?><p class="flex-caption"><?php echo $img_caption; ?></p><?php endif; ?>
                 
@@ -38,8 +38,8 @@
                 
                 <?php
                     foreach( $gallery['src'] AS $src ) {
-                    $img_id = foundationbuddy_get_attachment_id_from_src($src);
-                    $img_info =  foundationbuddy_get_attachment( $img_id );
+                    $img_id = infiword_get_attachment_id_from_src($src);
+                    $img_info =  infiword_get_attachment( $img_id );
                     $img_caption = $img_info['caption'];
                 ?>
                     

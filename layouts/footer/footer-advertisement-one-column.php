@@ -10,17 +10,17 @@
 /* ------------------------------------------------------------------------- *
  * Setting up default variables
  /* ------------------------------------------------------------------------- */
-    $foundationbuddy_footer_advertisement_one_link = '';
+    $infiword_footer_advertisement_one_link = '';
 ?>
 
 <div class="large-12 columns footer-ads-container">
         <?php
-            if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ) {
-                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' ) ) {
-                    $foundationbuddy_footer_advertisement_one_link = get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' );
+            if ( get_theme_mod( 'infiword_footer_advertisement_one' ) ) {
+                if ( get_theme_mod( 'infiword_footer_advertisement_one_link' ) ) {
+                    $infiword_footer_advertisement_one_link = get_theme_mod( 'infiword_footer_advertisement_one_link' );
                 }
-                    $foundationbuddy_footer_advertisement_one = '<a href="'. $foundationbuddy_footer_advertisement_one_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ).'"></a>';
-                    echo $foundationbuddy_footer_advertisement_one;
+                    $infiword_footer_advertisement_one = '<a href="'. $infiword_footer_advertisement_one_link . '"><img src="'.esc_url( get_theme_mod( 'infiword_footer_advertisement_one' ) ).'"></a>';
+                    echo $infiword_footer_advertisement_one;
             }
         ?>
 </div>

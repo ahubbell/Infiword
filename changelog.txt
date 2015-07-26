@@ -11,10 +11,11 @@ Copyright:          (c) 2015 Nirmalya Ghosh
 - Major CSS changes
 - Updated screenshot
 - Bug fixes in footer.php and header.php
-- Removes layout files and added page-template.php files for author, blog, search, tag, category and woocommerce layouts.
+- Removes layout files and added page-template.php files for author, blog, search and woocommerce layouts.
 - Added author.php, category.php and search.php
 - Added more custom home-page options
 - Added more theme options
+- Removed foundation.php file from 'library'
 
 July 17 2015 - 2.1.0
 ===========================================================

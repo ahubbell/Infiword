@@ -9,56 +9,56 @@
 /* ------------------------------------------------------------------------- *
  * Setting up default variables
  /* ------------------------------------------------------------------------- */
-    $foundationbuddy_footer_advertisement_one_link = '';
-    $foundationbuddy_footer_advertisement_two_link = '';
-    $foundationbuddy_footer_advertisement_three_link = '';
-    $foundationbuddy_footer_advertisement_four_link = '';
+    $infiword_footer_advertisement_one_link = '';
+    $infiword_footer_advertisement_two_link = '';
+    $infiword_footer_advertisement_three_link = '';
+    $infiword_footer_advertisement_four_link = '';
 ?>
 
 <div class="large-3 columns footer-ads-container">
         <?php
-            if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ) {
-                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' ) ) {
-                    $foundationbuddy_footer_advertisement_one_link = get_theme_mod( 'foundationbuddy_footer_advertisement_one_link' );
+            if ( get_theme_mod( 'infiword_footer_advertisement_one' ) ) {
+                if ( get_theme_mod( 'infiword_footer_advertisement_one_link' ) ) {
+                    $infiword_footer_advertisement_one_link = get_theme_mod( 'infiword_footer_advertisement_one_link' );
                 }
-                    $foundationbuddy_footer_advertisement_one = '<a href="'. $foundationbuddy_footer_advertisement_one_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_one' ) ).'"></a>';
-                    echo $foundationbuddy_footer_advertisement_one;
+                    $infiword_footer_advertisement_one = '<a href="'. $infiword_footer_advertisement_one_link . '"><img src="'.esc_url( get_theme_mod( 'infiword_footer_advertisement_one' ) ).'"></a>';
+                    echo $infiword_footer_advertisement_one;
             }
         ?>
 </div>
 
 <div class="large-3 columns footer-ads-container">
         <?php
-            if ( get_theme_mod( 'foundationbuddy_footer_advertisement_two' ) ) {
-                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_two_link' ) ) {
-                    $foundationbuddy_footer_advertisement_two_link = get_theme_mod( 'foundationbuddy_footer_advertisement_two_link' );
+            if ( get_theme_mod( 'infiword_footer_advertisement_two' ) ) {
+                if ( get_theme_mod( 'infiword_footer_advertisement_two_link' ) ) {
+                    $infiword_footer_advertisement_two_link = get_theme_mod( 'infiword_footer_advertisement_two_link' );
                 }
-                    $foundationbuddy_footer_advertisement_two = '<a href="'. $foundationbuddy_footer_advertisement_two_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_two' ) ).'"></a>';
-                    echo $foundationbuddy_footer_advertisement_two;
+                    $infiword_footer_advertisement_two = '<a href="'. $infiword_footer_advertisement_two_link . '"><img src="'.esc_url( get_theme_mod( 'infiword_footer_advertisement_two' ) ).'"></a>';
+                    echo $infiword_footer_advertisement_two;
             }
         ?>
 </div>
 
 <div class="large-3 columns footer-ads-container">
         <?php
-            if ( get_theme_mod( 'foundationbuddy_footer_advertisement_three' ) ) {
-                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_three_link' ) ) {
-                    $foundationbuddy_footer_advertisement_three_link = get_theme_mod( 'foundationbuddy_footer_advertisement_three_link' );
+            if ( get_theme_mod( 'infiword_footer_advertisement_three' ) ) {
+                if ( get_theme_mod( 'infiword_footer_advertisement_three_link' ) ) {
+                    $infiword_footer_advertisement_three_link = get_theme_mod( 'infiword_footer_advertisement_three_link' );
                 }
-                    $foundationbuddy_footer_advertisement_three = '<a href="'. $foundationbuddy_footer_advertisement_three_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_three' ) ).'"></a>';
-                    echo $foundationbuddy_footer_advertisement_three;
+                    $infiword_footer_advertisement_three = '<a href="'. $infiword_footer_advertisement_three_link . '"><img src="'.esc_url( get_theme_mod( 'infiword_footer_advertisement_three' ) ).'"></a>';
+                    echo $infiword_footer_advertisement_three;
             }
         ?>
 </div>
 
 <div class="large-3 columns footer-ads-container">
         <?php
-            if ( get_theme_mod( 'foundationbuddy_footer_advertisement_four' ) ) {
-                if ( get_theme_mod( 'foundationbuddy_footer_advertisement_four_link' ) ) {
-                    $foundationbuddy_footer_advertisement_four_link = get_theme_mod( 'foundationbuddy_footer_advertisement_four_link' );
+            if ( get_theme_mod( 'infiword_footer_advertisement_four' ) ) {
+                if ( get_theme_mod( 'infiword_footer_advertisement_four_link' ) ) {
+                    $infiword_footer_advertisement_four_link = get_theme_mod( 'infiword_footer_advertisement_four_link' );
                 }
-                    $foundationbuddy_footer_advertisement_four = '<a href="'. $foundationbuddy_footer_advertisement_four_link . '"><img src="'.esc_url( get_theme_mod( 'foundationbuddy_footer_advertisement_four' ) ).'"></a>';
-                    echo $foundationbuddy_footer_advertisement_four;
+                    $infiword_footer_advertisement_four = '<a href="'. $infiword_footer_advertisement_four_link . '"><img src="'.esc_url( get_theme_mod( 'infiword_footer_advertisement_four' ) ).'"></a>';
+                    echo $infiword_footer_advertisement_four;
             }
         ?>
 </div>

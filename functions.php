@@ -24,15 +24,15 @@ require_once('library/cleanup.php'); // do all the cleaning and enqueue here
 
 /*
 2. library/enqueue-style.php
-    - enqueue Foundation and foundationbuddy CSS
+    - enqueue Foundation and infiword CSS
 */
 require_once('library/enqueue-style.php');
 
 /*
-3. library/foundation.php
-	- add pagination
+3. library/theme-options.php
+    - add theme options through Kirki
 */
-require_once('library/foundation.php'); // load Foundation specific functions like top-bar
+require_once('library/theme-options.php');
 
 /*
 4. library/navigation.php
@@ -81,11 +81,5 @@ require_once('library/enqueue-scripts.php');
     - add theme support
 */
 require_once('library/theme-support.php');
-
-/*
-12. library/theme-options.php
-    - add theme options through Kirki
-*/
-require_once('library/theme-options.php');
 
 ?>

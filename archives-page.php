@@ -1,12 +1,11 @@
 <?php
-/**
+/* ------------------------------------------------------------------------- *
 Template Name: Custom Archives
- **/
+/* ------------------------------------------------------------------------- */
 ?>
 
 <?php get_header(); ?>
 
-    <!-- Row for main content area -->
     <!-- page-content -->
 	<div class="small-12 large-8 columns" id="page-content" role="main">
 	
@@ -29,10 +28,10 @@ Template Name: Custom Archives
 	
     <!-- pagination -->
 	<?php /* Display navigation to next/previous pages when applicable */ ?>
-	<?php if ( function_exists('foundationbuddy_pagination') ) { foundationbuddy_pagination(); } else if ( is_paged() ) { ?>
+	<?php if ( function_exists('infiword_pagination') ) { infiword_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationbuddy' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationbuddy' ) ); ?></div>
+			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'infiword' ) ); ?></div>
+			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'infiword' ) ); ?></div>
 		</nav>
 	<?php } ?>
     <!-- /pagination -->

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     
 <!-- full-width layout -->
-<?php if ( get_theme_mod('foundationbuddy_front_page_layout') == 'full-width' ) {  ?>
+<?php if ( get_theme_mod('infiword_front_page_layout') == 'full-width' ) {  ?>
 
 	<style type="text/css">
         #front-page-content {
@@ -19,7 +19,7 @@
 <!-- /full-width layout -->
 
 <!-- left-sidebar layout -->   
-<?php if ( get_theme_mod('foundationbuddy_front_page_layout') == 'left-sidebar' ) {  ?>
+<?php if ( get_theme_mod('infiword_front_page_layout') == 'left-sidebar' ) {  ?>
         
 	<aside id="left-sidebar" class="small-12 large-4 columns">
 	    <?php get_sidebar(); ?>
@@ -32,7 +32,7 @@
 <!-- /left-sidebar layout -->   
 
  <!-- dual-sidebar layout -->      
-<?php if ( get_theme_mod('foundationbuddy_front_page_layout') == 'dual-sidebar' ) {  ?>
+<?php if ( get_theme_mod('infiword_front_page_layout') == 'dual-sidebar' ) {  ?>
         
 	<aside id="left-sidebar" class="small-12 large-3 columns">
 	    <?php get_sidebar(); ?>
@@ -48,7 +48,7 @@
 <!-- /dual-sidebar layout -->   
 
 <!-- left-dual-sidebar layout -->     
-<?php if ( get_theme_mod('foundationbuddy_front_page_layout') == 'left-dual-sidebar' ) { ?>
+<?php if ( get_theme_mod('infiword_front_page_layout') == 'left-dual-sidebar' ) { ?>
         
 	<aside id="sidebar" class="small-12 large-3 columns">
 	    <?php get_sidebar(); ?>
@@ -64,7 +64,7 @@
 <!-- /left-dual-sidebar layout -->   
 
 <!-- right-dual-sidebar layout -->   
-<?php if ( get_theme_mod('foundationbuddy_front_page_layout') == 'right-dual-sidebar' ) {  ?>
+<?php if ( get_theme_mod('infiword_front_page_layout') == 'right-dual-sidebar' ) {  ?>
 
 	<div class="small-12 large-6 columns" id="front-page-content" role="main">
 		<?php get_template_part( 'layouts/front-page/page', 'template' ); ?>
@@ -80,7 +80,7 @@
 <!-- /right-dual-sidebar layout -->
 
 <!-- right-sidebar layout -->
-<?php if ( get_theme_mod('foundationbuddy_front_page_layout') == 'right-sidebar' || get_theme_mod('foundationbuddy_front_page_layout') == '' ) {  ?>
+<?php if ( get_theme_mod('infiword_front_page_layout') == 'right-sidebar' || get_theme_mod('infiword_front_page_layout') == '' ) {  ?>
 
 	<div class="small-12 large-8 columns" id="front-page-content" role="main">
 		<?php get_template_part( 'layouts/front-page/page', 'template' ); ?>

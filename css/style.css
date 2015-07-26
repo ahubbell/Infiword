@@ -855,8 +855,8 @@ footer.full-width.copyright {
     /*float: right;
     text-align: right;*/
 }
-.love-foundationbuddy,
-.love-foundationbuddy a {
+.love-infiword,
+.love-infiword a {
     color: #fff !important;
     font-size: 15px !important;
 }
@@ -1648,8 +1648,8 @@ img:hover.attachment-shop_thumbnail { opacity: 0.8 }
  * Flexslider
 /* ------------------------------------------------------------------------- */
 .flexslider {
-    padding-left: 0.9375rem;
-    padding-right: 0.9375rem;
+    /*padding-left: 0.9375rem;
+    padding-right: 0.9375rem;*/
 }
 .flexslider  img {
     max-height: 405px;
@@ -1758,6 +1758,7 @@ nav.top-bar.footer-menu {
 #front-page-content .format-status {
     background-color: rgb(214, 221, 228);
 }
+#search-page-content { margin-top: 20px; }
 .format-aside .post-entry-meta h2,
 .format-status .post-entry-meta h2 {
     visibility: hidden;

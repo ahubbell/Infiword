@@ -1,6 +1,6 @@
 <?php get_header(); ?>
     
-<?php if ( get_theme_mod('foundationbuddy_tag_page_layout') == 'full-width' ) {  ?>
+<?php if ( get_theme_mod('infiword_tag_page_layout') == 'full-width' ) {  ?>
 
 	<!-- full-width layout -->
 	<style type="text/css">
@@ -18,7 +18,7 @@
 
 <?php } ?>
 
-<?php if ( get_theme_mod('foundationbuddy_tag_page_layout') == 'left-sidebar' ) {  ?>
+<?php if ( get_theme_mod('infiword_tag_page_layout') == 'left-sidebar' ) {  ?>
 
 	<!-- left-sidebar layout -->           
 	<aside id="left-sidebar" class="small-12 large-4 columns">
@@ -31,7 +31,7 @@
 
 <?php } ?>
 
-<?php if ( get_theme_mod('foundationbuddy_tag_page_layout') == 'dual-sidebar' ) {  ?>
+<?php if ( get_theme_mod('infiword_tag_page_layout') == 'dual-sidebar' ) {  ?>
 
 	<!-- dual-sidebar layout -->        
 	<aside id="left-sidebar" class="small-12 large-3 columns">
@@ -47,7 +47,7 @@
 
 <?php } ?>
 
-<?php if ( get_theme_mod('foundationbuddy_tag_page_layout') == 'left-dual-sidebar' ) { ?>
+<?php if ( get_theme_mod('infiword_tag_page_layout') == 'left-dual-sidebar' ) { ?>
 
 	<!-- left-dual-sidebar layout -->             
 	<aside id="sidebar" class="small-12 large-3 columns">
@@ -63,7 +63,7 @@
     
 <?php } ?>
 
-<?php if ( get_theme_mod('foundationbuddy_tag_page_layout') == 'right-dual-sidebar' ) {  ?>
+<?php if ( get_theme_mod('infiword_tag_page_layout') == 'right-dual-sidebar' ) {  ?>
 
 	<!-- right-dual-sidebar layout -->   
 	<div class="small-12 large-6 columns" id="tag-page-content" role="main">
@@ -79,7 +79,7 @@
 
 <?php } ?>
 
-<?php if ( get_theme_mod('foundationbuddy_tag_page_layout') == 'right-sidebar' || get_theme_mod('foundationbuddy_tag_page_layout') == '' ) {  ?>
+<?php if ( get_theme_mod('infiword_tag_page_layout') == 'right-sidebar' || get_theme_mod('infiword_tag_page_layout') == '' ) {  ?>
 
 	<!-- right-sidebar layout -->
 	<div class="small-12 large-8 columns" id="tag-page-content" role="main">

@@ -1,7 +1,7 @@
 <?php
-/**
+/* ------------------------------------------------------------------------- *
 Template Name: Left Sidebar
- **/
+/* ------------------------------------------------------------------------- */
 ?>
 
 <?php get_header(); ?>
@@ -25,7 +25,7 @@ Template Name: Left Sidebar
 					<?php the_content(); ?>
 				</div>
 				<footer>
-					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
+					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'infiword'), 'after' => '</p></nav>' )); ?>
 				</footer>
 			</article>
 			<!-- /article -->
