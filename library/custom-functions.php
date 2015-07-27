@@ -365,32 +365,37 @@ endif;
 /* ------------------------------------------------------------------------- */
 
 if ( ! function_exists( 'infiword_menu_fallback' ) ) :
-function infiword_menu_fallback() {
-    if( current_user_can( 'manage_options' ) ){
-        echo '<div class="alert-box secondary">';
-        // Translators 1: Link to Menus, 2: Link to Customize
-            printf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'infiword' ),
-                sprintf(  __( '<a href="%s">Menus</a>', 'infiword' ),
-                    get_admin_url( get_current_blog_id(), 'nav-menus.php' )
-                ),
-                sprintf(  __( '<a href="%s">Customize</a>', 'infiword' ),
-                    get_admin_url( get_current_blog_id(), 'customize.php' )
-                )
-            );
-            echo '</div>';
+
+    function infiword_menu_fallback() {
+        if( current_user_can( 'manage_options' ) ){
+            echo '<div class="alert-box secondary">';
+            // Translators 1: Link to Menus, 2: Link to Customize
+                printf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'infiword' ),
+                    sprintf(  __( '<a href="%s">Menus</a>', 'infiword' ),
+                        get_admin_url( get_current_blog_id(), 'nav-menus.php' )
+                    ),
+                    sprintf(  __( '<a href="%s">Customize</a>', 'infiword' ),
+                        get_admin_url( get_current_blog_id(), 'customize.php' )
+                    )
+                );
+                echo '</div>';
+        }
     }
-}
+
 endif;
 
 // Add Foundation 'active' class for the current menu item
 if ( ! function_exists( 'infiword_active_nav_class' ) ) :
-function infiword_active_nav_class( $classes, $item ) {
-    if ( 1 == $item->current || true == $item->current_item_ancestor ) {
-        $classes[] = 'active';
+
+    function infiword_active_nav_class( $classes, $item ) {
+        if ( 1 == $item->current || true == $item->current_item_ancestor ) {
+            $classes[] = 'active';
+        }
+        return $classes;
     }
-    return $classes;
-}
-add_filter( 'nav_menu_css_class', 'infiword_active_nav_class', 10, 2 );
+
+    add_filter( 'nav_menu_css_class', 'infiword_active_nav_class', 10, 2 );
+
 endif;
 
 /* ------------------------------------------------------------------------- *
@@ -513,5 +518,27 @@ if ( ! class_exists( 'infiword_comments' ) ) :
     }
     
 endif;
+
+
+/* ------------------------------------------------------------------------- *
+ * Custom password protect form
+/* ------------------------------------------------------------------------- */
+
+if ( ! function_exists( 'infiword_password_form' ) ) :
+
+    function infiword_password_form() {
+        global $post;
+        $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+        $o = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
+        ' . __( "To view this protected post, enter the password below:" ) . '
+        <label for="' . $label . '">' . __( "Password:" ) . ' </label><input name="post_password" id="' . $label . '" type="password" size="20" maxlength="20" /><input type="submit" name="Submit" class="small radius button" value="' . esc_attr__( "Submit" ) . '" />
+        </form>
+        ';
+        return $o;
+    }
+
+endif;
+
+add_filter( 'the_password_form', 'infiword_password_form' );
 
 ?>

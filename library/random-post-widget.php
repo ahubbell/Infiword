@@ -3,7 +3,7 @@
     class infiword_RandomPostWidget extends WP_Widget {
         function infiword_RandomPostWidget() {
             $widget_ops = array('classname' => 'infiword_RandomPostWidget', 'description' => __( 'Displays a random post with thumbnail', 'infiword' ) );
-            $this->WP_Widget('infiword_RandomPostWidget', __( 'Random Post and Thumbnail', 'infiword' ), $widget_ops);
+            $this->__construct('infiword_RandomPostWidget', __( 'Random Post and Thumbnail', 'infiword' ), $widget_ops);
         }
 
       function form($instance) {

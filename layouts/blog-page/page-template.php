@@ -14,7 +14,8 @@
                     <?php infiword_entry_meta(); ?>
                 </header>
                 <?php
-                    if ( ! is_sticky() || false !== get_post_format() ) {
+                    $format = get_post_format();
+                    if ( has_post_format( 'audio' ) || has_post_format( 'gallery' ) || has_post_format( 'image' ) || has_post_format( 'video' ) || has_post_format( 'quote' ) || has_post_format( 'chat' ) || has_post_format( 'link' ) || has_post_format( 'status' ) || has_post_format( 'aside' )  ) {
                         get_template_part( 'library/post', 'formats' );
                     }
                     else {
@@ -25,7 +26,7 @@
                 <?php
                     }
                 ?>
-                <div class="entry-content"><?php the_content(); ?></div>
+
                 <div class="separator"></div>
                 <div class="after-post-footer">
                     <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'infiword'), 'after' => '</p></nav>' )); ?>
